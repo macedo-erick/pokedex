@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
       this.next = response.next;
 
       Promise.all(
-        response.results.map((p) => {
-          return this.baseService.get(p.url).then((res) => {
-            return res;
+        response.results.map((pokemon) => {
+          return this.baseService.get(pokemon.url).then((response) => {
+            return response;
           });
         })
       ).then((results) => {
