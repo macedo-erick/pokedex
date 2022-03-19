@@ -1,0 +1,59 @@
+.root {
+    section {
+        header {
+            max-width: 1200px;
+            height: 15rem;
+            padding: 20px;
+            margin: 0 auto !important;
+
+            .img-wrap {
+                position: relative;
+                width: 220px;
+                height: 220px;
+
+                img {
+                    width: 90%;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto !important;
+            padding: 30px 20px;
+
+            button {
+                border: noi;
+            }
+        }
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 0 auto !important;
+        padding: 30px 20px;
+
+        section {
+            div {
+                width: 50%;
+            }
+        }
+    }
+
+
+    .letter-spacing-1 {
+        letter-spacing: 1.5px;
+    }
+
+    .action-btn {
+        &:hover {
+            em {
+                &::before {
+                    color: #b6b6b6;
+                }
+            }
+        }
+    }
+}

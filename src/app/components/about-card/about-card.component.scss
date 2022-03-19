@@ -1,0 +1,22 @@
+section {
+    p {
+        width: 10rem;
+    }
+
+    .weakness,
+    .resistences {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+        padding: 0;
+
+        span {
+            text-align: center;
+        }
+    }
+}
+
+.full-width {
+    width: 25rem !important;
+}

@@ -1,1 +1,215 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('./assets/font/css/pokedex.css');
+
+* {
+    margin: 0 !important;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Roboto Slab", serif;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+    --color-primary-red: #770A20;
+    --color-red: #FB1B1B;
+    --color-black: #000000;
+    --color-grey: #F1F1F1;
+    --color-white: #FFFFFF;
+    --color-dark-blue: #0A285F;
+    --color-soft-blue: #0075BE;
+    --color-orange: #D5A100;
+    --color-yellow: #FFCC00;
+}
+
+.small-caps {
+    font-variant: small-caps;
+}
+
+.grass {
+    background-color: #3eb397 !important;
+    background-blend-mode: soft-light;
+}
+
+.fire {
+    background-color: #FC6C6D !important;
+    background-blend-mode: soft-light;
+}
+
+.water {
+    background-color: #6890F0 !important;
+    background-blend-mode: soft-light;
+}
+
+.bug {
+    background-color: #A8B820 !important;
+    background-blend-mode: soft-light;
+}
+
+.normal {
+    background-color: #A8A878 !important;
+    background-blend-mode: soft-light;
+}
+
+.poison {
+    background-color: #A040A0 !important;
+    background-blend-mode: soft-light;
+}
+
+.electric {
+    background-color: #F8D030 !important;
+    background-blend-mode: soft-light;
+}
+
+.ground {
+    background-color: #E0C068 !important;
+    background-blend-mode: soft-light;
+}
+
+.fairy {
+    background-color: #EE99AC !important;
+    background-blend-mode: soft-light;
+}
+
+.fighting {
+    background-color: #C03028 !important;
+    background-blend-mode: soft-light;
+}
+
+.psychic {
+    background-color: #F85888 !important;
+    background-blend-mode: soft-light;
+}
+
+.rock {
+    background-color: #B8A038 !important;
+    background-blend-mode: soft-light;
+}
+
+.ghost {
+    background-color: #705898 !important;
+    background-blend-mode: soft-light;
+}
+
+.ice {
+    background-color: #98D8D8 !important;
+    background-blend-mode: soft-light;
+}
+
+.dragon {
+    background-color: #7038F8 !important;
+    background-blend-mode: soft-light;
+}
+
+.flying {
+    background-color: #98D8D8 !important;
+    background-blend-mode: soft-light;
+}
+
+.dark {
+    background-color: #0b3737 !important;
+    background-blend-mode: soft-light;
+}
+
+.steel {
+    background-color: #787aae !important;
+    background-blend-mode: soft-light;
+}
+
+// Light Colors
+
+.grass-light {
+    background-color: #46c5a8 !important;
+    background-blend-mode: soft-light;
+}
+
+.fire-light {
+    background-color: #f58080 !important;
+    background-blend-mode: soft-light;
+}
+
+.water-light {
+    background-color: #85a8f8 !important;
+    background-blend-mode: soft-light;
+}
+
+.bug-light {
+    background-color: #bbc46d !important;
+    background-blend-mode: soft-light;
+}
+
+.normal-light {
+    background-color: #c4c490 !important;
+    background-blend-mode: soft-light;
+}
+
+.poison-light {
+    background-color: #c26dc2 !important;
+    background-blend-mode: soft-light;
+}
+
+.electric-light {
+    background-color: #e4c95e !important;
+    background-blend-mode: soft-light;
+}
+
+.ground-light {
+    background-color: #e4cd8e !important;
+    background-blend-mode: soft-light;
+}
+
+.fairy-light {
+    background-color: #f7a9ba !important;
+    background-blend-mode: soft-light;
+}
+
+.fighting-light {
+    background-color: #d5524b !important;
+    background-blend-mode: soft-light;
+}
+
+.psychic-light {
+    background-color: #f78cac !important;
+    background-blend-mode: soft-light;
+}
+
+.rock-light {
+    background-color: #ccb963 !important;
+    background-blend-mode: soft-light;
+}
+
+.ghost-light {
+    background-color: #8770ac !important;
+    background-blend-mode: soft-light;
+}
+
+.ice-light {
+    background-color: #b0d6d6 !important;
+    background-blend-mode: soft-light;
+}
+
+.dragon-light {
+    background-color: #9062fc !important;
+    background-blend-mode: soft-light;
+}
+
+.flying-light {
+    background-color: #98d1d1 !important;
+    background-blend-mode: soft-light;
+}
+
+.dark-light {
+    background-color: #164343 !important;
+    background-blend-mode: soft-light;
+}
+
+.steel-light {
+    background-color: #a2a4ca !important;
+    background-blend-mode: soft-light;
+}
