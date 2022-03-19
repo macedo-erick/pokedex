@@ -13,20 +13,9 @@ export class PokemonService {
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  getPokemons(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.BASE_URL}/?offset=0&limit=40`);
-  }
-
-  getPokemon(id): Observable<PokemonDTO> {
-    return this.http.get<PokemonDTO>(`${this.BASE_URL}/${id}`).pipe(
-      map((obj) => obj),
-      catchError((e) => this.errorHandler(e))
-    );
-  }
-
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
-      duration: 30000,
+      duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: isError ? ['msg-error'] : ['msg-success'],
@@ -39,5 +28,16 @@ export class PokemonService {
       true
     );
     return EMPTY;
+  }
+
+  getPokemons(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.BASE_URL}/?offset=0&limit=40`);
+  }
+
+  getPokemon(id): Observable<PokemonDTO> {
+    return this.http.get<PokemonDTO>(`${this.BASE_URL}/${id}`).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
   }
 }

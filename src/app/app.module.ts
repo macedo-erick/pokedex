@@ -17,7 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { AboutCardComponent } from './components/about-card/about-card.component';
 import { CardComponent } from './components/card/card.component';
-import { FormatDescriptionPipe } from './resources/pipe/format-description.pipe';
+import { FormatDescriptionPipe } from './pipes/format-description.pipe';
 
 @NgModule({
   declarations: [

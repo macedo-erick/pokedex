@@ -47,16 +47,21 @@ export class AboutCardComponent implements OnInit, OnChanges {
 
   getSpecie() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.specieService.getSpecie(parseInt(id)).subscribe((res) => {
-      this.specie = this.specieDto.convertResponseToSpecie(res);
-    });
+    this.specieService.getSpecie(parseInt(id)).subscribe(
+      (res) => {
+        this.specie = this.specieDto.convertResponseToSpecie(res);
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
   getTypes() {
     Promise.all(
-      this.pokemon.types.map((t) => {
+      this.pokemon.types.map((type) => {
         return this.typesService
-          .getType(t.name)
+          .getType(type.name)
           .toPromise()
           .then((res) => {
             return res;
@@ -72,7 +77,6 @@ export class AboutCardComponent implements OnInit, OnChanges {
 
   get weaknesses() {
     let weak = [];
-
     for (const type of this.types) {
       weak = weak.concat(type.weakness);
     }
@@ -82,7 +86,6 @@ export class AboutCardComponent implements OnInit, OnChanges {
 
   get resistances() {
     let resistance = [];
-
     for (const type of this.types) {
       resistance = resistance.concat(type.resistence);
     }

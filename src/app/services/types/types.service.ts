@@ -12,16 +12,9 @@ export class TypesService {
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  getType(name?: string): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/${name}`).pipe(
-      map((obj) => obj),
-      catchError((e) => this.errorHandler(e))
-    );
-  }
-
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
-      duration: 30000,
+      duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: isError ? ['msg-error'] : ['msg-success'],
@@ -34,5 +27,14 @@ export class TypesService {
       true
     );
     return EMPTY;
+  }
+
+  getType(name?: string): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/${name}`).pipe(
+      map((obj) => obj),
+      catchError((e) => {
+        console.log(e);
+        return this.errorHandler(e)})
+    );
   }
 }

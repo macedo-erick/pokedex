@@ -1,5 +1,17 @@
 .root {
     section {
+
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto !important;
+            padding: 30px 20px;
+
+            button {
+                border: noi;
+            }
+        }
+
         header {
             max-width: 1200px;
             height: 15rem;
@@ -18,16 +30,6 @@
                 }
             }
         }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto !important;
-            padding: 30px 20px;
-
-            button {
-                border: noi;
-            }
-        }
     }
 
     main {
@@ -40,11 +42,6 @@
                 width: 50%;
             }
         }
-    }
-
-
-    .letter-spacing-1 {
-        letter-spacing: 1.5px;
     }
 
     .action-btn {

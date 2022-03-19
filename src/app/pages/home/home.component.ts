@@ -9,7 +9,7 @@ import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  private next: string;
+  next: string;
   pokemons: Pokemon[] = [];
 
   constructor(
@@ -23,21 +23,37 @@ export class HomeComponent implements OnInit {
   }
 
   getPokemons() {
-    this.pokemonService.getPokemons().subscribe((response) => {
-      this.next = response.next;
+    this.pokemonService.getPokemons().subscribe(
+      (response) => {
+        this.next = response.next;
 
-      Promise.all(
-        response.results.map((pokemon) => {
-          return this.baseService.get(pokemon.url).then((response) => {
-            return response;
+        Promise.all(
+          response.results.map((pokemon) => {
+            return this.baseService
+              .get(pokemon.url)
+              .then((response) => {
+                return response;
+              })
+              .catch((err) => {
+                return err;
+              });
+          })
+        )
+          .then((results) => {
+            results.map((r) =>
+              this.pokemons.push(
+                this.pokemonDTO.convertResponseToPokemonCard(r)
+              )
+            );
+          })
+          .catch((err) => {
+            return err;
           });
-        })
-      ).then((results) => {
-        results.map((r) =>
-          this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(r))
-        );
-      });
-    });
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
   loadPokemons() {
@@ -46,12 +62,16 @@ export class HomeComponent implements OnInit {
 
       Promise.all(
         res.results.map((p) => {
-          return this.baseService.get(p.url).then((res) => {
-            return res;
-          });
+          return this.baseService
+            .get(p.url)
+            .then((res) => {
+              return res;
+            })
+            .catch((err) => {
+              return err;
+            });
         })
       ).then((results) => {
-        console.log(results);
         results.forEach((p) =>
           this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(p))
         );

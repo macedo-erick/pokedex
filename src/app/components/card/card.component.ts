@@ -8,7 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
 
   @Input() header: string = "header";
-  @Input() fullWidth: boolean = false;
 
   constructor() { }
 

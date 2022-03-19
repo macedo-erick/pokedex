@@ -27,10 +27,8 @@ export class DetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.pokemonService.getPokemon(id).subscribe((response) => {
       this.pokemon = this.dto.convertResponseToPokemon(response);
+    }, (err) => {
+      console.error(err);
     });
-  }
-
-  backToMenu() {
-    this.router.navigate(['']);
   }
 }
