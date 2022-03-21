@@ -1,25 +1,31 @@
 export class Pokemon {
   id: number;
-  name: number;
+  name: string;
   types: Type[];
   height: number;
   weight: number;
-  abilities: Abilites[];
-  sprites: Sprites;
-  stats: Stats[];
+  abilities?: Abilites[];
+  sprites?: Sprites;
+  stats?: Stats[];
 
-  convertValues() {
+  constructor() {
+    this.abilities = [];
+    this.types = [];
+    this.stats = [];
+  }
+
+  convertValues?() {
     this.height = parseFloat((this.height / 10).toFixed(1));
     this.weight = parseFloat((this.weight / 10).toFixed(1));
   }
 }
 
 export class Type {
-  slot: number;
-  name: string;
-  url: string;
-  weakness: string[];
-  resistence: string[];
+  slot?: number;
+  name?: string;
+  url?: string;
+  weaknesses?: string[];
+  resistences?: string[];
 }
 
 export interface Abilites {
@@ -34,9 +40,10 @@ export interface Ability {
 }
 
 export interface Sprites {
-  back_default: string;
-  front_default: string;
-  front_bigger: string;
+  back_default?: string;
+  front_default?: string;
+  front_bigger?: string;
+  other?: any;
 }
 
 export class Stats {
@@ -44,20 +51,20 @@ export class Stats {
   name: string;
 }
 
-export interface ApiResponse {
-  count: number;
-  next: string;
-  previous: string;
-  results: PokemonResponse[];
+export interface apiPokemonsResponse {
+  count?: number;
+  next?: string;
+  previous?: string;
+  results: apiPokemonResponse[];
 }
 
-export interface PokemonResponse {
+export interface apiPokemonResponse {
   name: string;
   url: string;
 }
 
 export class PokemonDTO {
-  convertResponseToPokemon(data: any): Pokemon {
+  convertResponseToPokemon?(data: any): Pokemon {
     let pokemon = new Pokemon();
     pokemon.id = data.id;
     pokemon.height = data.height;
@@ -74,7 +81,7 @@ export class PokemonDTO {
     return pokemon;
   }
 
-  convertResponseToPokemonCard(data: any): Pokemon {
+  convertResponseToPokemonCard?(data: any): Pokemon {
     let pokemon = new Pokemon();
     pokemon.id = data.id;
     pokemon.name = data.name;
@@ -86,7 +93,7 @@ export class PokemonDTO {
     return pokemon;
   }
 
-  convertStat(data: any) {
+  convertStat?(data: any) {
     let stats = new Stats();
     stats.name = data.stat.name;
     stats.value = data.base_stat;
@@ -94,7 +101,7 @@ export class PokemonDTO {
     return stats;
   }
 
-  convertType(data: any) {
+  convertType?(data: any) {
     let type = new Type();
     type.name = data.type.name;
     type.url = data.type.url;
@@ -105,11 +112,15 @@ export class PokemonDTO {
 }
 
 export class TypesDTO {
-  convertResponseToType(data: any) {
+  convertResponseToType?(data: any) {
     let type = new Type();
     type.name = data.name;
-    type.weakness = data.damage_relations.double_damage_from.map((i) => i.name);
-    type.resistence = data.damage_relations.double_damage_to.map((i) => i.name);
+    type.weaknesses = data.damage_relations.double_damage_from.map(
+      (i) => i.name
+    );
+    type.resistences = data.damage_relations.double_damage_to.map(
+      (i) => i.name
+    );
 
     return type;
   }
@@ -121,7 +132,7 @@ export class Specie {
 }
 
 export class SpecieDTO {
-  convertResponseToSpecie(data: any) {
+  convertResponseToSpecie?(data: any) {
     let specie = new Specie();
     specie.id = data.id;
     specie.text = data.flavor_text_entries[1].flavor_text;

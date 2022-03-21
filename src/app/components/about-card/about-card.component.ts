@@ -22,7 +22,7 @@ import { TypesService } from 'src/app/services/types/types.service';
   templateUrl: './about-card.component.html',
   styleUrls: ['./about-card.component.scss'],
 })
-export class AboutCardComponent implements OnInit, OnChanges {
+export class AboutCardComponent implements OnInit {
   @Input() pokemon: Pokemon = new Pokemon();
   specie: Specie;
   types: Type[] = [];
@@ -35,14 +35,9 @@ export class AboutCardComponent implements OnInit, OnChanges {
     private typesDto: TypesDTO
   ) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.pokemon) {
-      this.getTypes();
-    }
-  }
-
   ngOnInit(): void {
     this.getSpecie();
+    this.getTypes();
   }
 
   getSpecie() {
@@ -78,7 +73,7 @@ export class AboutCardComponent implements OnInit, OnChanges {
   get weaknesses() {
     let weak = [];
     for (const type of this.types) {
-      weak = weak.concat(type.weakness);
+      weak = weak.concat(type.weaknesses);
     }
 
     return Array.from(new Set(weak));
@@ -87,7 +82,7 @@ export class AboutCardComponent implements OnInit, OnChanges {
   get resistances() {
     let resistance = [];
     for (const type of this.types) {
-      resistance = resistance.concat(type.resistence);
+      resistance = resistance.concat(type.resistences);
     }
 
     return Array.from(new Set(resistance));

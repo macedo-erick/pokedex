@@ -23,7 +23,7 @@ export class SpeciesService {
 
   errorHandler(e: any): Observable<any> {
     this.showMessage(
-      e.error.message ? e.error.message : 'Unhandled error ',
+      e.message ? e.message : 'Unhandled error ',
       true
     );
     return EMPTY;

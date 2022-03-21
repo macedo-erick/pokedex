@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiResponse, Pokemon, PokemonDTO } from 'src/app/models/models';
+import { apiPokemonsResponse, Pokemon, PokemonDTO } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
-import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
+import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   pokemons: Pokemon[] = [];
 
   constructor(
-    private pokemonService: PokemonService,
+    private pokemonsService: PokemonsService,
     private baseService: BaseService,
     private pokemonDTO: PokemonDTO
   ) {}
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPokemons() {
-    this.pokemonService.getPokemons().subscribe(
+    this.pokemonsService.getPokemons().subscribe(
       (response) => {
         this.next = response.next;
 
@@ -38,17 +38,11 @@ export class HomeComponent implements OnInit {
                 return err;
               });
           })
-        )
-          .then((results) => {
-            results.map((r) =>
-              this.pokemons.push(
-                this.pokemonDTO.convertResponseToPokemonCard(r)
-              )
-            );
-          })
-          .catch((err) => {
-            return err;
-          });
+        ).then((results) => {
+          results.map((r) =>
+            this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(r))
+          );
+        });
       },
       (err) => {
         console.error(err);
@@ -57,25 +51,33 @@ export class HomeComponent implements OnInit {
   }
 
   loadPokemons() {
-    this.baseService.get(this.next).then((res: ApiResponse) => {
-      this.next = res.next;
-
-      Promise.all(
-        res.results.map((p) => {
-          return this.baseService
-            .get(p.url)
-            .then((res) => {
-              return res;
-            })
-            .catch((err) => {
-              return err;
-            });
-        })
-      ).then((results) => {
-        results.forEach((p) =>
-          this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(p))
-        );
+    this.baseService
+      .get(this.next)
+      .then((res: apiPokemonsResponse) => {
+        this.next = res.next;
+        this.promisesHandler(res);
+      })
+      .catch((err) => {
+        return err;
       });
+  }
+
+  promisesHandler(res: any) {
+    Promise.all(
+      res.results.map((p) => {
+        return this.baseService
+          .get(p.url)
+          .then((res) => {
+            return res;
+          })
+          .catch((err) => {
+            return err;
+          });
+      })
+    ).then((results) => {
+      results.forEach((p) =>
+        this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(p))
+      );
     });
   }
 }

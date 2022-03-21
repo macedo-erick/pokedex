@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatDescriptionPipe implements PipeTransform {
 
-  transform(value: string, ...args: unknown[]): unknown {
-    return value.replace("\n", "").replace("\f", "");
+  transform(value: string): unknown {
+    return value?.replace("\n", "").replace("\f", "");
   }
 
 }

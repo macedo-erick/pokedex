@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class TypesService {
-  private BASE_URL = 'https://pokeapi.co/api/v2/type';
+  BASE_URL = 'https://pokeapi.co/api/v2/type';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -23,7 +23,7 @@ export class TypesService {
 
   errorHandler(e: any): Observable<any> {
     this.showMessage(
-      e.error.message ? e.error.message : 'Unhandled error ',
+      e.message ? e.message : 'Unhandled error ',
       true
     );
     return EMPTY;
@@ -33,8 +33,8 @@ export class TypesService {
     return this.http.get(`${this.BASE_URL}/${name}`).pipe(
       map((obj) => obj),
       catchError((e) => {
-        console.log(e);
-        return this.errorHandler(e)})
+        return this.errorHandler(e);
+      })
     );
   }
 }

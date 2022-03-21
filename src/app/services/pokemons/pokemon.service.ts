@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ApiResponse, PokemonDTO } from 'src/app/models/models';
+import { apiPokemonsResponse, Pokemon, PokemonDTO } from 'src/app/models/models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PokemonService {
-  private BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
+export class PokemonsService {
+  BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -24,18 +24,23 @@ export class PokemonService {
 
   errorHandler(e: any): Observable<any> {
     this.showMessage(
-      e.error.message ? e.error.message : 'Unhandled error ',
+      e.message ? e.message : 'Unhandled error ',
       true
     );
     return EMPTY;
   }
 
-  getPokemons(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.BASE_URL}/?offset=0&limit=40`);
+  getPokemons(): Observable<apiPokemonsResponse> {
+    return this.http
+      .get<apiPokemonsResponse>(`${this.BASE_URL}/?offset=0&limit=40`)
+      .pipe(
+        map((obj) => obj),
+        catchError((e) => this.errorHandler(e))
+      );
   }
 
-  getPokemon(id): Observable<PokemonDTO> {
-    return this.http.get<PokemonDTO>(`${this.BASE_URL}/${id}`).pipe(
+  getPokemon(id): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.BASE_URL}/${id}`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
