@@ -2,7 +2,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
@@ -10,6 +10,8 @@ import { PokemonDTO } from 'src/app/models/models';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 import { DetailsComponent } from './details.component';
 import { throwError } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { FormatIdPipe } from 'src/app/pipes/format-id/format-id.pipe';
 
 describe('DetailsComponent', () => {
   let component: DetailsComponent;
@@ -43,8 +45,9 @@ describe('DetailsComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         MatSnackBarModule,
+        CommonModule
       ],
-      declarations: [DetailsComponent],
+      declarations: [DetailsComponent, FormatIdPipe],
       providers: [
         PokemonDTO,
         { provide: PokemonsService, useValue: pokemonsServiceMock },

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { pokemonMock } from 'src/app/helpers/testHelpers';
 
 import { StatsCardComponent } from './stats-card.component';
 
@@ -16,6 +17,7 @@ describe('StatsCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StatsCardComponent);
     component = fixture.componentInstance;
+    component.pokemon = pokemonMock;
     fixture.detectChanges();
   });
 

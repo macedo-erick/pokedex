@@ -4,9 +4,9 @@ export class Pokemon {
   types: Type[];
   height: number;
   weight: number;
-  abilities?: Abilites[];
-  sprites?: Sprites;
-  stats?: Stats[];
+  abilities: Abilites[];
+  sprites: Sprites;
+  stats: Stats[];
 
   constructor() {
     this.abilities = [];
@@ -14,7 +14,7 @@ export class Pokemon {
     this.stats = [];
   }
 
-  convertValues?() {
+  calcDimensions?() {
     this.height = parseFloat((this.height / 10).toFixed(1));
     this.weight = parseFloat((this.weight / 10).toFixed(1));
   }
@@ -51,6 +51,26 @@ export class Stats {
   name: string;
 }
 
+export class Specie {
+  id: number;
+  text: string;
+  evolution_chain?: {
+    url: string;
+  };
+
+  constructor() {
+    this.evolution_chain = { url: null };
+  }
+}
+
+export class EvolutionChain {
+  evolutions: string[];
+
+  constructor() {
+    this.evolutions = [];
+  }
+}
+
 export interface apiPokemonsResponse {
   count?: number;
   next?: string;
@@ -76,7 +96,7 @@ export class PokemonDTO {
     pokemon.sprites = data.sprites;
     pokemon.sprites.front_bigger =
       data.sprites.other['official-artwork'].front_default;
-    pokemon.convertValues();
+    pokemon.calcDimensions();
 
     return pokemon;
   }
@@ -126,11 +146,6 @@ export class TypesDTO {
   }
 }
 
-export class Specie {
-  id: number;
-  text: string;
-}
-
 export class SpecieDTO {
   convertResponseToSpecie?(data: any) {
     let specie = new Specie();
@@ -138,5 +153,23 @@ export class SpecieDTO {
     specie.text = data.flavor_text_entries[1].flavor_text;
 
     return specie;
+  }
+}
+
+export class EvolutionDTO {
+  convertResponseToEvolution?(data: any) {
+    let evolutionChain = new EvolutionChain();
+
+    evolutionChain.evolutions.push(
+      data.chain.species.name,
+      data.chain.evolves_to[0]?.species.name,
+      data.chain.evolves_to[0]?.evolves_to[0]?.species.name
+    );
+
+    // data.chain.evolves_to[0]?.species.name ? evolutionChain.evolutions.push(data.chain.evolves_to[0]?.species.name) : null;
+    // data.chain.evolves_to[0]?.evolves_to[0]?.species.name ? evolutionChain.evolutions.push(data.chain.evolves_to[0]?.evolves_to[0]?.species.name) : null;
+
+
+    return evolutionChain;
   }
 }

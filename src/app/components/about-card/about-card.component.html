@@ -1,43 +1,41 @@
 <card header="about">
-  <div class="content">
-    
-    <section class="pb-4 d-flex">
-      <p class="fw-bolder fs-6">Description</p>
-      <p class="full-width"> {{ specie.text | formatDescription }}</p>
-    </section>
-
-    <section class="pb-4 d-flex">
-      <p class="fw-bolder fs-6">Height</p>
-      <p class="full-width">{{ pokemon.height }} m</p>
-    </section>
-
-    <section class="pb-4 d-flex">
-      <p class="fw-bolder fs-6">Weight</p>
-      <p class="full-width">{{ pokemon.weight }} kg</p>
-    </section>
-
-    <section class="pb-4 d-flex">
-      <p class="fw-bolder fs-6">Habilities</p>
-      <section class="full-width">
-        <div *ngFor="let item of pokemon.abilities">
-          <span *ngIf="item.is_hidden" class="text-capitalize">{{ item.ability.name }}</span>
+  <main>
+      <section class="pb-4 d-flex">
+        <p class="fw-bolder fs-6">Description</p>
+        <p class="full-width"> {{ specie.text | formatText }}</p>
+      </section>
+  
+      <section class="pb-4 d-flex">
+        <p class="fw-bolder fs-6">Height</p>
+        <p class="full-width">{{ pokemon.height }} m</p>
+      </section>
+  
+      <section class="pb-4 d-flex">
+        <p class="fw-bolder fs-6">Weight</p>
+        <p class="full-width">{{ pokemon.weight }} kg</p>
+      </section>
+  
+      <section class="pb-4 d-flex">
+        <p class="fw-bolder fs-6">Habilities</p>
+        <section class="full-width d-flex">
+          <div *ngFor="let item of pokemon.abilities">
+            <span *ngIf="!item.is_hidden" class="text-capitalize me-1">{{ item.ability.name }}</span>
+          </div>
+        </section>
+      </section>
+  
+      <section class="pb-4 d-flex">
+        <p class="fw-bolder fs-6">Weaknesses</p>
+        <div class="full-width weakness">
+            <span *ngFor="let weakness of weaknesses" class="px-4 py-2 {{weakness}}-light rounded-pill text-light fw-bold text-capitalize text-center">{{ weakness }}</span>
         </div>
       </section>
-    </section>
-
-    <section class="pb-4 d-flex">
-      <p class="fw-bolder fs-6">Weaknesses</p>
-      <div class="full-width weakness">
-          <span *ngFor="let weakness of weaknesses" class="px-4 py-2 {{weakness}}-light rounded-pill text-light fw-bold text-capitalize text-center">{{ weakness }}</span>
-      </div>
-    </section>
-    
-    <section class="pb-4 d-flex">
-        <p class="fw-bolder fs-6">Resistances</p>
-        <div class="full-width resistences">
-            <span *ngFor="let resistance of resistances" class="px-4 py-2 {{resistance}}-light rounded-pill text-light fw-bold text-capitalize text-center">{{ resistance }}</span>
-        </div>
-    </section>
-
-  </div>
+      
+      <section class="pb-4 d-flex">
+          <p class="fw-bolder fs-6">Resistances</p>
+          <div class="full-width resistences">
+              <span *ngFor="let resistance of resistances" class="px-4 py-2 {{resistance}}-light rounded-pill text-light fw-bold text-capitalize text-center">{{ resistance }}</span>
+          </div>
+      </section>
+  </main>
 </card>

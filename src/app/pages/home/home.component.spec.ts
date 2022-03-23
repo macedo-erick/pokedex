@@ -9,11 +9,12 @@ import {
   TestBed,
 } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import {
   apiPokemonsResponseMock,
   asyncData,
   asyncError,
+  defaultErrorMessageMock,
   defaultServerErrorMock,
   pokemonDtoMock,
   pokemonMock,
@@ -105,5 +106,26 @@ describe('HomeComponent', () => {
       .and.rejectWith(asyncError(defaultServerErrorMock));
 
     component.promisesHandler(apiPokemonsResponseMock);
+  }));
+
+  it('Test search with query', fakeAsync(() => {
+    spyOn(pokemonsService, 'getPokemons').and.callThrough();
+    spyOn(baseService, 'get').and.resolveTo(asyncData(pokemonMock));
+    flush();
+    component.search('T');
+  }));
+
+  it('Test search with query (Exception)', fakeAsync(() => {
+    spyOn(pokemonsService, 'getPokemons').and.callThrough();
+    spyOn(baseService, 'get').and.rejectWith(asyncError(defaultServerErrorMock));
+    flush();
+    component.search('T');
+  }));
+
+  it('Test search no query', fakeAsync(() => {
+    spyOn(pokemonsService, 'getPokemons').and.callThrough();
+    spyOn(baseService, 'get').and.resolveTo(asyncData(pokemonMock));
+    flush();
+    component.search('');
   }));
 });

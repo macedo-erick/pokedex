@@ -1,4 +1,7 @@
+import { evolutionChainMock } from '../helpers/testHelpers';
 import {
+  EvolutionChain,
+  EvolutionDTO,
   Pokemon,
   PokemonDTO,
   Specie,
@@ -59,7 +62,7 @@ describe('Testing Pokemon model', () => {
     pokemon.height = 10;
     pokemon.weight = 10;
 
-    pokemon.convertValues();
+    pokemon.calcDimensions();
 
     expect(pokemon.height).toBe(1);
     expect(pokemon.weight).toBe(1);
@@ -114,5 +117,32 @@ describe('Testing SpeciesDTO model', () => {
     const specie = specieDTO.convertResponseToSpecie(data);
 
     expect(specie).toEqual(convertData);
+  });
+});
+
+describe('Testing EvolotiunDTO model', () => {
+  let evolutionDTO = new EvolutionDTO();
+  let data = JSON.parse(JSON.stringify(evolutionChainMock));
+
+  beforeEach(() => {
+    data = JSON.parse(JSON.stringify(evolutionChainMock));
+  });
+
+  it('test convertResponseToEvolution - case 1', () => {
+    const convertData: EvolutionChain = new EvolutionChain();
+    convertData.evolutions = ['Test', undefined, undefined];
+
+    data.chain.evolves_to[0] = undefined;
+
+    expect(convertData).toEqual(evolutionDTO.convertResponseToEvolution(data));
+  });
+
+  it('test convertResponseToEvolution - case 2', () => {
+    const convertData: EvolutionChain = new EvolutionChain();
+    convertData.evolutions = ['Test', 'Test 1', undefined];
+
+    data.chain.evolves_to[0].evolves_to[0] = undefined;
+
+    expect(convertData).toEqual(evolutionDTO.convertResponseToEvolution(data));
   });
 });

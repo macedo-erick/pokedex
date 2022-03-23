@@ -30,16 +30,16 @@ export class PokemonsService {
     return EMPTY;
   }
 
-  getPokemons(): Observable<apiPokemonsResponse> {
+  getPokemons(offset: any = 0, limit: any = 40): Observable<apiPokemonsResponse> {
     return this.http
-      .get<apiPokemonsResponse>(`${this.BASE_URL}/?offset=0&limit=40`)
+      .get<apiPokemonsResponse>(`${this.BASE_URL}/?offset=${offset}&limit=${limit}`)
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
       );
   }
 
-  getPokemon(id): Observable<Pokemon> {
+  getPokemon(id: any): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${this.BASE_URL}/${id}`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))

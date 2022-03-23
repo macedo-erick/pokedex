@@ -11,9 +11,9 @@ import { TypesService } from 'src/app/services/types/types.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AboutCardComponent } from './about-card.component';
-import { BehaviorSubject, throwError } from 'rxjs';
-import { Specie, SpecieDTO, Type, TypesDTO } from 'src/app/models/models';
-import { FormatDescriptionPipe } from 'src/app/pipes/format-description.pipe';
+import { throwError } from 'rxjs';
+import { SpecieDTO, TypesDTO } from 'src/app/models/models';
+import { FormatTextPipe } from 'src/app/pipes/format-text/format-text.pipe';
 import { CommonModule } from '@angular/common';
 import {
   asyncData,
@@ -34,7 +34,7 @@ describe('AboutCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientTestingModule, CommonModule],
-      declarations: [AboutCardComponent, FormatDescriptionPipe],
+      declarations: [AboutCardComponent, FormatTextPipe],
       providers: [
         { provide: SpeciesService, useValue: specieServiceMock },
         { provide: TypesService, useValue: typeServiceMock },

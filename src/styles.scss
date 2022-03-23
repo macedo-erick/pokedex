@@ -26,6 +26,43 @@ body {
     --color-soft-blue: #0075BE;
     --color-orange: #D5A100;
     --color-yellow: #FFCC00;
+    --color-grass: #3eb397;
+    --color-fire: #FC6C6D;
+    --color-water: #6890F0;
+    --color-bug: #A8B820;
+    --color-normal: #A8A878;
+    --color-poison: #A040A0;
+    --color-electric: #F8D030;
+    --color-ground: #E0C068;
+    --color-fairy: #EE99AC;
+    --color-fighting: #C03028;
+    --color-psychic: #F85888;
+    --color-rock: #B8A038;
+    --color-ghost: #705898;
+    --color-ice: #98D8D8;
+    --color-dragon: #7038F8;
+    --color-flying: #98D8D8;
+    --color-dark: #0b3737;
+    --color-steel: #787aae;
+    --color-grass-light: #46c5a8;
+    --color-fire-light: #f58080;
+    --color-water-light: #85a8f8;
+    --color-bug-light: #bbc46d;
+    --color-normal-light: #c4c490;
+    --color-poison-light: #c26dc2;
+    --color-electric-light: #e4c95e;
+    --color-ground-light: #e4cd8e;
+    --color-fairy-light: #f7a9ba;
+    --color-fighting-light: #d5524b;
+    --color-psychic-light: #f78cac;
+    --color-rock-light: #ccb963;
+    --color-ghost-light: #8770ac;
+    --color-ice-light: #b0d6d6;
+    --color-dragon-light: #9062fc;
+    --color-flying-light: #98d1d1;
+    --color-dark-light: #164343;
+    --color-steel-light: #a2a4ca;
+    
 }
 
 .small-caps {
@@ -33,184 +70,184 @@ body {
 }
 
 .grass {
-    background-color: #3eb397 !important;
+    background-color: var(--color-grass) !important;
     background-blend-mode: soft-light;
 }
 
 .fire {
-    background-color: #FC6C6D !important;
+    background-color: var(--color-fire) !important;
     background-blend-mode: soft-light;
 }
 
 .water {
-    background-color: #6890F0 !important;
+    background-color: var(--color-water) !important;
     background-blend-mode: soft-light;
 }
 
 .bug {
-    background-color: #A8B820 !important;
+    background-color: var(--color-bug) !important;
     background-blend-mode: soft-light;
 }
 
 .normal {
-    background-color: #A8A878 !important;
+    background-color: var(--color-normal) !important;
     background-blend-mode: soft-light;
 }
 
 .poison {
-    background-color: #A040A0 !important;
+    background-color: var(--color-poison) !important;
     background-blend-mode: soft-light;
 }
 
 .electric {
-    background-color: #F8D030 !important;
+    background-color: var(--color-electric) !important;
     background-blend-mode: soft-light;
 }
 
 .ground {
-    background-color: #E0C068 !important;
+    background-color: var(--color-ground) !important;
     background-blend-mode: soft-light;
 }
 
 .fairy {
-    background-color: #EE99AC !important;
+    background-color: var(--color-fairy) !important;
     background-blend-mode: soft-light;
 }
 
 .fighting {
-    background-color: #C03028 !important;
+    background-color: var(--color-fighting) !important;
     background-blend-mode: soft-light;
 }
 
 .psychic {
-    background-color: #F85888 !important;
+    background-color: var(--color-psychic) !important;
     background-blend-mode: soft-light;
 }
 
 .rock {
-    background-color: #B8A038 !important;
+    background-color: var(--color-rock) !important;
     background-blend-mode: soft-light;
 }
 
 .ghost {
-    background-color: #705898 !important;
+    background-color: var(--color-ghost) !important;
     background-blend-mode: soft-light;
 }
 
 .ice {
-    background-color: #98D8D8 !important;
+    background-color: var(--color-ice) !important;
     background-blend-mode: soft-light;
 }
 
 .dragon {
-    background-color: #7038F8 !important;
+    background-color: var(--color-dragon) !important;
     background-blend-mode: soft-light;
 }
 
 .flying {
-    background-color: #98D8D8 !important;
+    background-color: var(--color-flying) !important;
     background-blend-mode: soft-light;
 }
 
 .dark {
-    background-color: #0b3737 !important;
+    background-color: var(--color-dark) !important;
     background-blend-mode: soft-light;
 }
 
 .steel {
-    background-color: #787aae !important;
+    background-color: var(--color-steel) !important;
     background-blend-mode: soft-light;
 }
 
 // Light Colors
 
 .grass-light {
-    background-color: #46c5a8 !important;
+    background-color: var(--color-grass-light) !important;
     background-blend-mode: soft-light;
 }
 
 .fire-light {
-    background-color: #f58080 !important;
+    background-color: var(--color-fire-light) !important;
     background-blend-mode: soft-light;
 }
 
 .water-light {
-    background-color: #85a8f8 !important;
+    background-color: var(--color-water-light) !important;
     background-blend-mode: soft-light;
 }
 
 .bug-light {
-    background-color: #bbc46d !important;
+    background-color: var(--color-bug-light) !important;
     background-blend-mode: soft-light;
 }
 
 .normal-light {
-    background-color: #c4c490 !important;
+    background-color: var(--color-normal-light) !important;
     background-blend-mode: soft-light;
 }
 
 .poison-light {
-    background-color: #c26dc2 !important;
+    background-color: var(--color-poison-light) !important;
     background-blend-mode: soft-light;
 }
 
 .electric-light {
-    background-color: #e4c95e !important;
+    background-color: var(--color-electric-light) !important;
     background-blend-mode: soft-light;
 }
 
 .ground-light {
-    background-color: #e4cd8e !important;
+    background-color: var(--color-ground-light) !important;
     background-blend-mode: soft-light;
 }
 
 .fairy-light {
-    background-color: #f7a9ba !important;
+    background-color: var(--color-fairy-light) !important;
     background-blend-mode: soft-light;
 }
 
 .fighting-light {
-    background-color: #d5524b !important;
+    background-color: var(--color-fighting-light) !important;
     background-blend-mode: soft-light;
 }
 
 .psychic-light {
-    background-color: #f78cac !important;
+    background-color: var(--color-psychic-light) !important;
     background-blend-mode: soft-light;
 }
 
 .rock-light {
-    background-color: #ccb963 !important;
+    background-color: var(--color-rock-light) !important;
     background-blend-mode: soft-light;
 }
 
 .ghost-light {
-    background-color: #8770ac !important;
+    background-color: var(--color-ghost-light) !important;
     background-blend-mode: soft-light;
 }
 
 .ice-light {
-    background-color: #b0d6d6 !important;
+    background-color: var(--color-ice-light) !important;
     background-blend-mode: soft-light;
 }
 
 .dragon-light {
-    background-color: #9062fc !important;
+    background-color: var(--color-dragon-light) !important;
     background-blend-mode: soft-light;
 }
 
 .flying-light {
-    background-color: #98d1d1 !important;
+    background-color: var(--color-flying-light) !important;
     background-blend-mode: soft-light;
 }
 
 .dark-light {
-    background-color: #164343 !important;
+    background-color: var(--color-dark-light) !important;
     background-blend-mode: soft-light;
 }
 
 .steel-light {
-    background-color: #a2a4ca !important;
+    background-color: var(--color-steel-light) !important;
     background-blend-mode: soft-light;
 }
 
@@ -220,4 +257,8 @@ body {
 
 .soft-blue-bg {
     background-color: var(--color-soft-blue);
+}
+
+.w-15 {
+    width: 15%;
 }

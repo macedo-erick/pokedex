@@ -21,6 +21,7 @@ typeMock.resistences = ['ice'];
 const specieMock = new Specie();
 specieMock.id = 1;
 specieMock.text = 'Test data';
+specieMock.evolution_chain.url = 'https://pokeapi.co/api/v2/pokemon-species/1';
 
 const pokemonMock = new Pokemon();
 pokemonMock.id = 1;
@@ -40,11 +41,36 @@ pokemonMock.abilities = [
   { ability: { name: 'Test', url: '' }, is_hidden: false, slot: 1 },
 ];
 pokemonMock.sprites = {
+  front_bigger: '',
   other: { 'official-artwork': { front_default: 'Test data' } },
 };
-pokemonMock.stats = [{ name: 'Test', value: 10 }];
+pokemonMock.stats = [
+  { name: 'Test', value: 10 },
+  { name: 'Test', value: 30 },
+  { name: 'Test', value: 40 },
+  { name: 'Test', value: 70 },
+  { name: 'Test', value: 60 },
+  { name: 'Test', value: 50 },
+];
 
-const apiPokemonResponseMock = { name: 'Test', url: 'Test' };
+const evolutionChainMock = {
+  chain: {
+    species: {
+      name: 'Test',
+    },
+    evolves_to: [
+      {
+        species: { name: 'Test 1' },
+        evolves_to: [{ species: { name: 'Test 2' } }],
+      },
+    ],
+  },
+};
+
+const apiPokemonResponseMock = {
+  name: 'Test',
+  url: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1500',
+};
 const apiPokemonsResponseMock = { results: [apiPokemonResponseMock] };
 const defaultErrorMessageMock = 'Something Went Wrong';
 const defaultServerErrorMock = {
@@ -109,6 +135,7 @@ export {
   pokemonMock,
   typesDtoMock,
   pokemonDtoMock,
+  evolutionChainMock,
   apiPokemonResponseMock,
   pokemonsServiceMock,
   snackBarServiceMock,

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { apiPokemonsResponse, Pokemon, PokemonDTO } from 'src/app/models/models';
+import {
+  apiPokemonsResponse,
+  Pokemon,
+  PokemonDTO,
+} from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 
@@ -39,6 +43,7 @@ export class HomeComponent implements OnInit {
               });
           })
         ).then((results) => {
+          this.pokemons = [];
           results.map((r) =>
             this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(r))
           );
@@ -79,5 +84,36 @@ export class HomeComponent implements OnInit {
         this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(p))
       );
     });
+  }
+
+  search(query: string) {
+    if (query.trim().length) {
+      this.pokemonsService.getPokemons(0, 1500).subscribe((response) => {
+        this.next = null;
+        const filteredResults = response.results.filter((p) =>
+          p.name.includes(query)
+        );
+
+        Promise.all(
+          filteredResults.map((r) => {
+            return this.baseService
+              .get(r.url)
+              .then((res) => {
+                return res;
+              })
+              .catch((err) => {
+                return err;
+              });
+          })
+        ).then((results) => {
+          this.pokemons = [];
+          results.forEach((p) =>
+            this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(p))
+          );
+        });
+      });
+    } else {
+      this.getPokemons();
+    }
   }
 }

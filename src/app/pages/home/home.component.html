@@ -6,8 +6,8 @@
             </header>
         </section>
         <section class="search-bar">
-            <input type="text" placeholder="Search...">
-            <button class="search-btn border-0">
+            <input type="text" placeholder="Search..." #input>
+            <button class="search-btn border-0" (click)="search(input.value.toLowerCase())" matRipple>
                 <em class="pokedex-search"></em>
             </button>
         </section>

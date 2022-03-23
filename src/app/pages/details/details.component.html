@@ -13,7 +13,7 @@
         <div class="infos d-flex align-items-center flex-column">
             <div class="top-container d-flex align-items-center h-50">
                 <h1 class="text-light text-capitalize fw-bold letter-spacing-1 me-3 fs-1"> {{ pokemon.name }} </h1>
-                <span class="text-light fs-4 fw-bold opacity-25"> #{{ pokemon.id.toString().padStart(4,'0') }} </span>
+                <span class="text-light fs-4 fw-bold opacity-25"> {{ pokemon.id | formatId }} </span>
             </div>
             <div class="bottom-container w-100">
                 <span *ngFor="let type of pokemon.types" class="text-capitalize fw-bold px-4 py-2 {{type.name}}-light me-2 rounded-pill text-light"> {{ type.name }}</span>
@@ -27,14 +27,14 @@
         </a>
     </header>
   </section>
+
   <main>
-    <section class="d-flex top-container">
-      <div class="me-3">
-        <about-card [pokemon]="pokemon"></about-card>
-      </div>
-      <div>
-        <about-card [pokemon]="pokemon"></about-card>
-      </div>
+    <section class="d-flex top-container mb-4">
+        <about-card [pokemon]="pokemon" class="me-3 w-50"></about-card>
+        <stats-card [pokemon]="pokemon" class="w-50"></stats-card>
+    </section>
+    <section>
+      <evolution-card [pokemon]="pokemon"></evolution-card>
     </section>
   </main>
 </div>

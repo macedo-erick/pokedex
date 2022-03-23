@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormatValuePipe } from 'src/app/pipes/format-value/format-value.pipe';
 
 import { ProgressBarComponent } from './progress-bar.component';
 
@@ -8,7 +10,8 @@ describe('ProgressBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProgressBarComponent ]
+      imports: [CommonModule],
+      declarations: [ ProgressBarComponent, FormatValuePipe]
     })
     .compileComponents();
   });

@@ -1,7 +1,7 @@
 <div class="card shadow p-4 {{pokemon.types[0].name}}">
     <section class="top-container d-flex justify-content-between h-50 align-items-center">
         <span class="fw-bold fs-3 text-light text-capitalize">{{ pokemon.name }}</span>
-        <span class="fw-bold text-light opacity-25 fs-3">#{{pokemon.id.toString().padStart(4,'0')}}</span>
+        <span class="fw-bold text-light opacity-25 fs-3">{{ pokemon.id | formatId }}</span>
     </section>
     <section class="bottom-container d-flex justify-content-between h-100 align-items-center">
         <div class="types">

@@ -41,8 +41,7 @@ export class AboutCardComponent implements OnInit {
   }
 
   getSpecie() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.specieService.getSpecie(parseInt(id)).subscribe(
+    this.specieService.getSpecie(this.pokemon.id).subscribe(
       (res) => {
         this.specie = this.specieDto.convertResponseToSpecie(res);
       },

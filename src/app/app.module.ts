@@ -11,13 +11,17 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
 import { StatsCardComponent } from './components/stats-card/stats-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { PokemonDTO, SpecieDTO, TypesDTO } from './models/models';
+import { EvolutionDTO, PokemonDTO, SpecieDTO, TypesDTO } from './models/models';
 import { MatRippleModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { AboutCardComponent } from './components/about-card/about-card.component';
 import { CardComponent } from './components/card/card.component';
-import { FormatDescriptionPipe } from './pipes/format-description.pipe';
+import { FormatTextPipe } from './pipes/format-text/format-text.pipe';
+import { FormatValuePipe } from './pipes/format-value/format-value.pipe';
+import { EvolutionCardComponent } from './components/evolution-card/evolution-card.component';
+import { PokemonComponent } from './components/pokemon/pokemon.component';
+import { FormatIdPipe } from './pipes/format-id/format-id.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { FormatDescriptionPipe } from './pipes/format-description.pipe';
     ProgressBarComponent,
     AboutCardComponent,
     CardComponent,
-    FormatDescriptionPipe,
+    FormatTextPipe,
+    FormatValuePipe,
+    EvolutionCardComponent,
+    PokemonComponent,
+    FormatIdPipe,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,7 @@ import { FormatDescriptionPipe } from './pipes/format-description.pipe';
     MatProgressBarModule,
     RouterModule
   ],
-  providers: [PokemonDTO, SpecieDTO, TypesDTO],
+  providers: [PokemonDTO, SpecieDTO, TypesDTO, EvolutionDTO],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
