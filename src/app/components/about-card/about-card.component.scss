@@ -16,3 +16,29 @@ section {
 .full-width {
     width: 25rem !important;
 }
+
+@media(max-width: 460px) {
+
+    section {
+        p {
+            width: 70vw;
+
+            font-size: .8rem !important;
+        }
+
+        .weakness,
+        .resistences {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 5px;
+            margin-bottom: 20px;
+            padding: 0;
+
+            span {
+                font-size: .6rem !important;
+                padding: .5rem 1rem !important;
+            }
+        }
+
+    }
+}

@@ -25,4 +25,9 @@
             background-repeat: no-repeat;
         }
     }
+
+    @media(max-width: 480px) {
+        width: fit-content;
+        height: 250px;
+    }
 }

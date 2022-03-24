@@ -13,14 +13,17 @@
         </section>
     </div>
     <main>
-        <section class="p-5">
+        <section>
             <ul>
                 <a *ngFor="let pokemon of pokemons" class="text-decoration-none" routerLink="details/{{ pokemon.id }}">
                     <pokemon-card [pokemon]="pokemon"></pokemon-card>
                 </a>
+
+                <h1 *ngIf="!pokemons.length && this.loaded" class="fw-bold fw-4">No results found.</h1>
+                
             </ul>
         </section>
-        <section class="my-4 d-flex align-items-center justify-content-center" *ngIf="next != null">
+        <section class="my-4 d-flex align-items-center justify-content-center" *ngIf="next != null && this.loaded">
             <button class="mb-5 load-pokemons-btn p-3 rounded border-0 text-light fw-bolder soft-blue-bg" matRipple (click)="loadPokemons()">Load more Pokémons</button>
         </section>
     </main>

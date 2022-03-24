@@ -27,6 +27,6 @@ describe('formatTextPipe', () => {
     const string = 'Test\nString\f';
     const formated = formatTextPipe.transform(string);
 
-    expect(formated).toBe('Test String');
+    expect(formated).toBe('Test String ');
   });
 });

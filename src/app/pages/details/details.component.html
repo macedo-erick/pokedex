@@ -6,7 +6,7 @@
       </a>
     </nav>
     <header class="d-flex justify-content-between">
-        <div *ngIf="pokemon.id == 1"></div>
+        <div *ngIf="pokemon.id == 1" style="width: 2rem; margin-right: 2.5rem !important;"></div>
         <a class="border-0 bg-transparent text-light fs-2 p-0 action-btn text-decoration-none d-flex align-items-center" *ngIf="pokemon.id != 1" [routerLink]="['/details', pokemon.id - 1]">
             <em class="pokedex-chevron-left"></em>
         </a>

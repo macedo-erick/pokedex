@@ -14,11 +14,11 @@ import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 export class HomeComponent implements OnInit {
   next: string;
   pokemons: Pokemon[] = [];
+  loaded = false;
 
   constructor(
     private pokemonsService: PokemonsService,
     private baseService: BaseService,
-    // private pokemonDTO: PokemonDTO
   ) {}
 
   ngOnInit(): void {
@@ -43,12 +43,14 @@ export class HomeComponent implements OnInit {
           })
         ).then((results) => {
           this.pokemons = [];
+          this.loaded = true;
           results.map((r) =>
             this.pokemons.push(r)
           );
         });
       },
       (err) => {
+        this.loaded = true;
         console.error(err);
       }
     );
