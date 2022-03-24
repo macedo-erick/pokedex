@@ -2,26 +2,33 @@
 
 import { BehaviorSubject, defer } from 'rxjs';
 import {
+  EvolutionChain,
   Pokemon,
-  PokemonDTO,
   Specie,
-  SpecieDTO,
   Type,
+  Types,
   TypesDTO,
 } from '../models/models';
 import { PokemonsService } from '../services/pokemons/pokemon.service';
 import { SpeciesService } from '../services/species/species.service';
 import { TypesService } from '../services/types/types.service';
 
-const typeMock = new Type();
-typeMock.name = 'grass';
+const typeMock = new Types();
+typeMock.type = new Type();
+typeMock.type.name = 'grass';
+typeMock.type.url = 'https://pokeapi.co/api/v2/type/1';
 typeMock.weaknesses = ['ice'];
 typeMock.resistences = ['ice'];
 
+const evolutionMock = new EvolutionChain();
+evolutionMock.url = 'https://pokeapi.co/api/v2/evolution-chain/1/';
+
 const specieMock = new Specie();
 specieMock.id = 1;
-specieMock.text = 'Test data';
-specieMock.evolution_chain.url = 'https://pokeapi.co/api/v2/pokemon-species/1';
+specieMock.flavor_text_entries = [{ flavor_text: '' }, { flavor_text: '' }];
+specieMock.flavor_text_entries[1].flavor_text = 'Test data';
+specieMock.evolution_chain = evolutionMock;
+specieMock.url = "https://pokeapi.co/api/v2/pokemon-species/1"
 
 const pokemonMock = new Pokemon();
 pokemonMock.id = 1;
@@ -30,9 +37,8 @@ pokemonMock.height = 10;
 pokemonMock.weight = 10;
 pokemonMock.types = [
   {
-    name: 'Test',
+    type: { name: 'Test', url: '' },
     slot: 1,
-    url: '',
     resistences: ['ice'],
     weaknesses: ['ice'],
   },
@@ -41,17 +47,18 @@ pokemonMock.abilities = [
   { ability: { name: 'Test', url: '' }, is_hidden: false, slot: 1 },
 ];
 pokemonMock.sprites = {
-  front_bigger: '',
   other: { 'official-artwork': { front_default: 'Test data' } },
 };
 pokemonMock.stats = [
-  { name: 'Test', value: 10 },
-  { name: 'Test', value: 30 },
-  { name: 'Test', value: 40 },
-  { name: 'Test', value: 70 },
-  { name: 'Test', value: 60 },
-  { name: 'Test', value: 50 },
+  { name: 'Test', base_stat: 10 },
+  { name: 'Test', base_stat: 30 },
+  { name: 'Test', base_stat: 40 },
+  { name: 'Test', base_stat: 70 },
+  { name: 'Test', base_stat: 60 },
+  { name: 'Test', base_stat: 50 },
 ];
+pokemonMock.species = specieMock;
+pokemonMock.species.url = 'https://pokeapi.co/api/v2/pokemon-species/1';
 
 const evolutionChainMock = {
   chain: {
@@ -88,21 +95,9 @@ const typeServiceMock: Partial<TypesService> = {
   getType: () => new BehaviorSubject<any>(typeMock),
 };
 
-const speciesDtoMock: Partial<SpecieDTO> = {
-  convertResponseToSpecie: () => {
-    return new Specie();
-  },
-};
-
 const typesDtoMock: Partial<TypesDTO> = {
   convertResponseToType: () => {
-    return new Type();
-  },
-};
-
-const pokemonDtoMock: Partial<PokemonDTO> = {
-  convertResponseToPokemonCard: () => {
-    return new Pokemon();
+    return new Types();
   },
 };
 
@@ -131,10 +126,8 @@ export function asyncError<T>(errorObject: any) {
 export {
   specieServiceMock,
   typeServiceMock,
-  speciesDtoMock,
   pokemonMock,
   typesDtoMock,
-  pokemonDtoMock,
   evolutionChainMock,
   apiPokemonResponseMock,
   pokemonsServiceMock,

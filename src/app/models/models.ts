@@ -1,69 +1,74 @@
 export class Pokemon {
   id: number;
   name: string;
-  types: Type[];
+  types: Types[];
+  stats: Stats[];
+  abilities: Abilites[];
+  species: Specie;
+  sprites: Sprite;
   height: number;
   weight: number;
-  abilities: Abilites[];
-  sprites: Sprites;
-  stats: Stats[];
 
   constructor() {
     this.abilities = [];
     this.types = [];
     this.stats = [];
   }
-
-  calcDimensions?() {
-    this.height = parseFloat((this.height / 10).toFixed(1));
-    this.weight = parseFloat((this.weight / 10).toFixed(1));
-  }
 }
 
-export class Type {
-  slot?: number;
-  name?: string;
-  url?: string;
+export class Types {
+  slot: number;
+  type: Type;
   weaknesses?: string[];
   resistences?: string[];
 }
 
-export interface Abilites {
+export class Type {
+  name: string;
+  url: string;
+}
+
+export class Stats {
+  name: string;
+  base_stat: number;
+}
+
+export class Abilites {
   ability: Ability;
   is_hidden: boolean;
   slot: number;
 }
 
-export interface Ability {
+export class Ability {
   name: string;
   url: string;
 }
 
-export interface Sprites {
-  back_default?: string;
-  front_default?: string;
-  front_bigger?: string;
-  other?: any;
-}
-
-export class Stats {
-  value: number;
-  name: string;
-}
-
 export class Specie {
-  id: number;
-  text: string;
-  evolution_chain?: {
-    url: string;
-  };
+  id: number | string;
+  name: string;
+  url: string;
+  flavor_text_entries: FlavorText[];
+  evolution_chain: EvolutionChain;
+}
 
-  constructor() {
-    this.evolution_chain = { url: null };
-  }
+export class FlavorText {
+  flavor_text: string;
 }
 
 export class EvolutionChain {
+  url: string;
+}
+
+export class Sprite {
+  other: {
+    'official-artwork': {
+      front_default: string;
+    };
+  };
+}
+
+export class Evolutions {
   evolutions: string[];
 
   constructor() {
@@ -83,58 +88,9 @@ export interface apiPokemonResponse {
   url: string;
 }
 
-export class PokemonDTO {
-  convertResponseToPokemon?(data: any): Pokemon {
-    let pokemon = new Pokemon();
-    pokemon.id = data.id;
-    pokemon.height = data.height;
-    pokemon.weight = data.weight;
-    pokemon.name = data.name;
-    pokemon.stats = data.stats.map((s) => this.convertStat(s));
-    pokemon.types = data.types.map((t) => this.convertType(t));
-    pokemon.abilities = data.abilities;
-    pokemon.sprites = data.sprites;
-    pokemon.sprites.front_bigger =
-      data.sprites.other['official-artwork'].front_default;
-    pokemon.calcDimensions();
-
-    return pokemon;
-  }
-
-  convertResponseToPokemonCard?(data: any): Pokemon {
-    let pokemon = new Pokemon();
-    pokemon.id = data.id;
-    pokemon.name = data.name;
-    pokemon.types = data.types.map((t) => this.convertType(t));
-    pokemon.sprites = data.sprites;
-    pokemon.sprites.front_bigger =
-      data.sprites.other['official-artwork'].front_default;
-
-    return pokemon;
-  }
-
-  convertStat?(data: any) {
-    let stats = new Stats();
-    stats.name = data.stat.name;
-    stats.value = data.base_stat;
-
-    return stats;
-  }
-
-  convertType?(data: any) {
-    let type = new Type();
-    type.name = data.type.name;
-    type.url = data.type.url;
-    type.slot = data.slot;
-
-    return type;
-  }
-}
-
 export class TypesDTO {
   convertResponseToType?(data: any) {
-    let type = new Type();
-    type.name = data.name;
+    let type = new Types();
     type.weaknesses = data.damage_relations.double_damage_from.map(
       (i) => i.name
     );
@@ -146,30 +102,16 @@ export class TypesDTO {
   }
 }
 
-export class SpecieDTO {
-  convertResponseToSpecie?(data: any) {
-    let specie = new Specie();
-    specie.id = data.id;
-    specie.text = data.flavor_text_entries[1].flavor_text;
-
-    return specie;
-  }
-}
-
-export class EvolutionDTO {
+export class EvolutionsDTO {
   convertResponseToEvolution?(data: any) {
-    let evolutionChain = new EvolutionChain();
+    let evolutions = new Evolutions();
 
-    evolutionChain.evolutions.push(
+    evolutions.evolutions.push(
       data.chain.species.name,
       data.chain.evolves_to[0]?.species.name,
       data.chain.evolves_to[0]?.evolves_to[0]?.species.name
     );
 
-    // data.chain.evolves_to[0]?.species.name ? evolutionChain.evolutions.push(data.chain.evolves_to[0]?.species.name) : null;
-    // data.chain.evolves_to[0]?.evolves_to[0]?.species.name ? evolutionChain.evolutions.push(data.chain.evolves_to[0]?.evolves_to[0]?.species.name) : null;
-
-
-    return evolutionChain;
+    return evolutions;
   }
 }

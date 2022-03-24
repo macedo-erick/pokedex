@@ -1,20 +1,10 @@
 import {
-  AfterViewInit,
   Component,
   Input,
-  OnChanges,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {
-  Pokemon,
-  Specie,
-  SpecieDTO,
-  Type,
-  TypesDTO,
-} from 'src/app/models/models';
-import { SpeciesService } from 'src/app/services/species/species.service';
+import { Pokemon, Specie, Types, TypesDTO } from 'src/app/models/models';
+import { BaseService } from 'src/app/services/base/base.service';
 import { TypesService } from 'src/app/services/types/types.service';
 
 @Component({
@@ -25,14 +15,12 @@ import { TypesService } from 'src/app/services/types/types.service';
 export class AboutCardComponent implements OnInit {
   @Input() pokemon: Pokemon = new Pokemon();
   specie: Specie;
-  types: Type[] = [];
+  types: Types[] = [];
 
   constructor(
-    private route: ActivatedRoute,
-    private specieService: SpeciesService,
     private typesService: TypesService,
-    private specieDto: SpecieDTO,
-    private typesDto: TypesDTO
+    private typesDto: TypesDTO,
+    private baseService: BaseService
   ) {}
 
   ngOnInit(): void {
@@ -41,21 +29,21 @@ export class AboutCardComponent implements OnInit {
   }
 
   getSpecie() {
-    this.specieService.getSpecie(this.pokemon.id).subscribe(
-      (res) => {
-        this.specie = this.specieDto.convertResponseToSpecie(res);
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    this.baseService
+      .get(this.pokemon.species.url)
+      .then((res) => {
+        this.specie = res;
+      })
+      .catch((err) => {
+        return err;
+      });
   }
 
   getTypes() {
     Promise.all(
       this.pokemon.types.map((type) => {
         return this.typesService
-          .getType(type.name)
+          .getType(type.type.name)
           .toPromise()
           .then((res) => {
             return res;

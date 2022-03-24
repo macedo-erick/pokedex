@@ -11,7 +11,7 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
 import { StatsCardComponent } from './components/stats-card/stats-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { EvolutionDTO, PokemonDTO, SpecieDTO, TypesDTO } from './models/models';
+import { EvolutionsDTO, TypesDTO } from './models/models';
 import { MatRippleModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
@@ -49,7 +49,7 @@ import { FormatIdPipe } from './pipes/format-id/format-id.pipe';
     MatProgressBarModule,
     RouterModule
   ],
-  providers: [PokemonDTO, SpecieDTO, TypesDTO, EvolutionDTO],
+  providers: [TypesDTO, EvolutionsDTO],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

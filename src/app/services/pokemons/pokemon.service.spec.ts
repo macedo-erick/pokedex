@@ -11,8 +11,6 @@ import {
   snackBarServiceMock,
 } from 'src/app/helpers/testHelpers';
 import {
-  apiPokemonsResponse,
-  PokemonDTO,
   apiPokemonResponse,
   Pokemon,
 } from 'src/app/models/models';
@@ -32,7 +30,6 @@ describe('PokemonService', () => {
       providers: [
         { provide: MatSnackBar, useValue: snackBarServiceMock },
         PokemonsService,
-        PokemonDTO,
       ],
     });
     service = TestBed.inject(PokemonsService);

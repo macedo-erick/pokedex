@@ -29,7 +29,7 @@ export class SpeciesService {
     return EMPTY;
   }
 
-  getSpecie(id: number): Observable<any> {
+  getSpecie(id: number | string): Observable<any> {
     return this.http.get<any>(`${this.BASE_URL}/${id}`).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))

@@ -15,7 +15,7 @@ export class StatsCardComponent implements OnInit {
 
   get total() {
     let sum = 0;
-    this.pokemon.stats.forEach((stat) => (sum += stat.value));
+    this.pokemon.stats.forEach((stat) => (sum += stat.base_stat));
 
     return sum;
   }

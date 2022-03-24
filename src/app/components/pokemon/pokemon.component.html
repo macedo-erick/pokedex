@@ -1,6 +1,6 @@
 <section>
   <a [routerLink]="['/details/', pokemon.id]">
-    <img [src]="pokemon.sprites.front_bigger" alt="pokemon.name" />
+    <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="pokemon.name" />
   </a>
   <section class="d-flex justify-content-center mt-1">
     <p class="fs-4 text-capitalize fw-bold me-2"> {{ pokemon.name }}</p>

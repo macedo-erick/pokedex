@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EvolutionChain, EvolutionDTO, Pokemon } from 'src/app/models/models';
+import { Evolutions, EvolutionsDTO, Pokemon } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
-import { SpeciesService } from 'src/app/services/species/species.service';
 
 @Component({
   selector: 'evolution-card',
@@ -10,11 +9,10 @@ import { SpeciesService } from 'src/app/services/species/species.service';
 })
 export class EvolutionCardComponent implements OnInit {
   @Input() pokemon: Pokemon;
-  evolutionChain: EvolutionChain;
+  evolutionChain: Evolutions;
 
   constructor(
-    private evolutionDto: EvolutionDTO,
-    private speciesService: SpeciesService,
+    private evolutionDto: EvolutionsDTO,
     private baseService: BaseService
   ) {}
 
@@ -23,12 +21,16 @@ export class EvolutionCardComponent implements OnInit {
   }
 
   getEvolution() {
-    this.speciesService.getSpecie(this.pokemon.id).subscribe(result => {
-      this.baseService.get(result.evolution_chain.url).then((res) => {
-        this.evolutionChain = this.evolutionDto.convertResponseToEvolution(res);
-      }). catch(err => {
-        console.log(err);
-      });
-    })
+    this.baseService.get(this.pokemon.species.url).then((result) => {
+      this.baseService
+        .get(result.evolution_chain.url)
+        .then((res) => {
+          this.evolutionChain =
+            this.evolutionDto.convertResponseToEvolution(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
   }
 }

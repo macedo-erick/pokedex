@@ -9,26 +9,24 @@ describe('formatTextPipe', () => {
 
   it('Shoud be instancied', () => {
     expect(formatTextPipe).toBeDefined();
-  })
+  });
 
   it('create an instance', () => {
     const pipe = new FormatTextPipe();
     expect(pipe).toBeTruthy();
   });
 
-  it('Should transform clear string', ()=> {
-      const string = 'Test\nString';
-      const formated = formatTextPipe.transform(string)
+  it('Should transform clear string', () => {
+    const string = 'Test\nString';
+    const formated = formatTextPipe.transform(string);
 
-      expect(formated).toBe('Test String')
+    expect(formated).toBe('Test String');
   });
 
-  it('Should transform special string', ()=> {
+  it('Should transform special string', () => {
     const string = 'Test\nString\f';
-    const formated = formatTextPipe.transform(string)
+    const formated = formatTextPipe.transform(string);
 
-    expect(formated).toBe('Test String')
-});
-
-
+    expect(formated).toBe('Test String');
+  });
 });

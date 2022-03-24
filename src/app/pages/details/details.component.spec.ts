@@ -6,7 +6,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
-import { PokemonDTO } from 'src/app/models/models';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 import { DetailsComponent } from './details.component';
 import { throwError } from 'rxjs';
@@ -37,6 +36,7 @@ describe('DetailsComponent', () => {
       other: { 'official-artwork': { front_default: 'Test data' } },
     },
     abilities: undefined,
+    species: {url: 'https://pokeapi.co/api/v2/pokemon-species/3'}
   };
 
   beforeEach(async () => {
@@ -49,7 +49,6 @@ describe('DetailsComponent', () => {
       ],
       declarations: [DetailsComponent, FormatIdPipe],
       providers: [
-        PokemonDTO,
         { provide: PokemonsService, useValue: pokemonsServiceMock },
       ],
     }).compileComponents();

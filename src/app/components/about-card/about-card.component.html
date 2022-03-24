@@ -2,17 +2,17 @@
   <main>
       <section class="pb-4 d-flex">
         <p class="fw-bolder fs-6">Description</p>
-        <p class="full-width"> {{ specie.text | formatText }}</p>
+        <p class="full-width"> {{ specie.flavor_text_entries[1].flavor_text | formatText }}</p>
       </section>
   
       <section class="pb-4 d-flex">
         <p class="fw-bolder fs-6">Height</p>
-        <p class="full-width">{{ pokemon.height }} m</p>
+        <p class="full-width">{{ pokemon.height / 10}} m</p>
       </section>
   
       <section class="pb-4 d-flex">
         <p class="fw-bolder fs-6">Weight</p>
-        <p class="full-width">{{ pokemon.weight }} kg</p>
+        <p class="full-width">{{ pokemon.weight / 10 }} kg</p>
       </section>
   
       <section class="pb-4 d-flex">
@@ -31,7 +31,7 @@
         </div>
       </section>
       
-      <section class="pb-4 d-flex">
+      <section class="d-flex">
           <p class="fw-bolder fs-6">Resistances</p>
           <div class="full-width resistences">
               <span *ngFor="let resistance of resistances" class="px-4 py-2 {{resistance}}-light rounded-pill text-light fw-bold text-capitalize text-center">{{ resistance }}</span>

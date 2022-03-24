@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {
   apiPokemonsResponse,
   Pokemon,
-  PokemonDTO,
 } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
@@ -19,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private pokemonsService: PokemonsService,
     private baseService: BaseService,
-    private pokemonDTO: PokemonDTO
+    // private pokemonDTO: PokemonDTO
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +44,7 @@ export class HomeComponent implements OnInit {
         ).then((results) => {
           this.pokemons = [];
           results.map((r) =>
-            this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(r))
+            this.pokemons.push(r)
           );
         });
       },
@@ -80,8 +79,8 @@ export class HomeComponent implements OnInit {
           });
       })
     ).then((results) => {
-      results.forEach((p) =>
-        this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(p))
+      results.forEach((p: Pokemon) =>
+        this.pokemons.push(p)
       );
     });
   }
@@ -108,7 +107,7 @@ export class HomeComponent implements OnInit {
         ).then((results) => {
           this.pokemons = [];
           results.forEach((p) =>
-            this.pokemons.push(this.pokemonDTO.convertResponseToPokemonCard(p))
+            this.pokemons.push(p)
           );
         });
       });

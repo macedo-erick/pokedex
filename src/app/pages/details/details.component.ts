@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Pokemon, PokemonDTO } from 'src/app/models/models';
+import { Pokemon } from 'src/app/models/models';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private pokemonsService: PokemonsService,
-    private dto: PokemonDTO,
     private router: Router
   ) {}
 
@@ -28,7 +27,8 @@ export class DetailsComponent implements OnInit {
   getPokemon() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.pokemonsService.getPokemon(this.id).subscribe((response) => {
-      this.pokemon = this.dto.convertResponseToPokemon(response);
+      this.pokemon = response;
+      console.log(this.pokemon);
     }, (err) => {
       return err;
     });

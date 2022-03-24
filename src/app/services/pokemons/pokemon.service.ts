@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { apiPokemonsResponse, Pokemon, PokemonDTO } from 'src/app/models/models';
+import { apiPokemonsResponse, Pokemon } from 'src/app/models/models';
 
 @Injectable({
   providedIn: 'root',

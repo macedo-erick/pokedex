@@ -4,13 +4,16 @@ import {
 } from '@angular/common/http/testing';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import {
+  asyncData,
+  asyncError,
   defaultErrorMessageMock,
   defaultServerErrorMock,
   evolutionChainMock,
   pokemonMock,
+  specieMock,
   specieServiceMock,
 } from 'src/app/helpers/testHelpers';
-import { EvolutionDTO } from 'src/app/models/models';
+import { EvolutionsDTO } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
 import { SpeciesService } from 'src/app/services/species/species.service';
 
@@ -28,7 +31,7 @@ describe('EvolutionCardComponent', () => {
       declarations: [EvolutionCardComponent],
       providers: [
         { provide: SpeciesService, useValue: specieServiceMock },
-        EvolutionDTO,
+        EvolutionsDTO,
         BaseService,
       ],
     }).compileComponents();
@@ -49,18 +52,21 @@ describe('EvolutionCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Test get evolutions', fakeAsync(() => {
+  it('Test get evolutions (Exception)', fakeAsync(() => {
+    spyOn(baseService, 'get').and.resolveTo(asyncData(specieMock));
+
     let req = httpController.expectOne(
       'https://pokeapi.co/api/v2/pokemon-species/1'
     );
-    req.flush(evolutionChainMock);
+    req.flush(specieMock);
   }));
 
   it('Test get evolutions (Exception)', fakeAsync(() => {
+    spyOn(baseService, 'get').and.rejectWith(asyncError(specieMock));
+
     let req = httpController.expectOne(
       'https://pokeapi.co/api/v2/pokemon-species/1'
     );
-
-    req.flush(defaultErrorMessageMock, defaultServerErrorMock);
+    req.flush(specieMock);
   }));
 });

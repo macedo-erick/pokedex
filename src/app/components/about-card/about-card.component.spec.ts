@@ -1,9 +1,7 @@
 import {
   ComponentFixture,
   fakeAsync,
-  flush,
   TestBed,
-  tick,
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SpeciesService } from 'src/app/services/species/species.service';
@@ -12,24 +10,28 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AboutCardComponent } from './about-card.component';
 import { throwError } from 'rxjs';
-import { SpecieDTO, TypesDTO } from 'src/app/models/models';
+import {  TypesDTO } from 'src/app/models/models';
 import { FormatTextPipe } from 'src/app/pipes/format-text/format-text.pipe';
 import { CommonModule } from '@angular/common';
 import {
   asyncData,
+  asyncError,
   defaultServerErrorMock,
-  speciesDtoMock,
+  pokemonMock,
+  specieMock,
   specieServiceMock,
   typeMock,
   typesDtoMock,
   typeServiceMock,
 } from 'src/app/helpers/testHelpers';
+import { BaseService } from 'src/app/services/base/base.service';
 
 describe('AboutCardComponent', () => {
   let component: AboutCardComponent;
   let fixture: ComponentFixture<AboutCardComponent>;
   let speciesService: SpeciesService;
   let typesService: TypesService;
+  let baseService: BaseService
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -38,20 +40,20 @@ describe('AboutCardComponent', () => {
       providers: [
         { provide: SpeciesService, useValue: specieServiceMock },
         { provide: TypesService, useValue: typeServiceMock },
-        { provide: SpecieDTO, useValue: speciesDtoMock },
         { provide: TypesDTO, useValue: typesDtoMock },
       ],
     }).compileComponents();
 
-    speciesService = TestBed.inject(SpeciesService);
+    baseService = TestBed.inject(BaseService);
     typesService = TestBed.inject(TypesService);
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AboutCardComponent);
     component = fixture.componentInstance;
-    component.pokemon.types = [typeMock];
+    component.pokemon = pokemonMock;
     component.types = [typeMock];
+    component.specie = specieMock
     fixture.detectChanges();
   });
 
@@ -60,10 +62,19 @@ describe('AboutCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Test getSpecie - Exception', () => {
-    spyOn(speciesService, 'getSpecie')
+  it('Test getSpecie', () => {
+    spyOn(baseService, 'get')
       .and.callThrough()
-      .and.returnValue(throwError(defaultServerErrorMock));
+      .and.resolveTo(asyncData(defaultServerErrorMock));
+
+    component.getSpecie();
+  });
+
+
+  it('Test getSpecie - Exception', () => {
+    spyOn(baseService, 'get')
+      .and.callThrough()
+      .and.rejectWith(asyncError(defaultServerErrorMock));
 
     component.getSpecie();
   });

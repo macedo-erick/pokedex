@@ -5,7 +5,7 @@ import {
   pokemonMock,
   pokemonsServiceMock,
 } from 'src/app/helpers/testHelpers';
-import { Pokemon, PokemonDTO, Type } from 'src/app/models/models';
+import { Type } from 'src/app/models/models';
 import { FormatIdPipe } from 'src/app/pipes/format-id/format-id.pipe';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 
@@ -14,10 +14,6 @@ import { PokemonComponent } from './pokemon.component';
 describe('PokemonComponent', () => {
   let component: PokemonComponent;
   let fixture: ComponentFixture<PokemonComponent>;
-  let pockemonDTOMock: Partial<PokemonDTO> = {
-    convertType: () => new Type(),
-    convertResponseToPokemonCard: () => pokemonMock
-  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,7 +21,6 @@ describe('PokemonComponent', () => {
       declarations: [PokemonComponent, FormatIdPipe],
       providers: [
         { provide: PokemonsService, useValue: pokemonsServiceMock },
-        { provide: PokemonDTO, useValue: pockemonDTOMock },
       ],
     }).compileComponents();
   });

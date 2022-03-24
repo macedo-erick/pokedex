@@ -9,18 +9,15 @@ import {
   TestBed,
 } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import {
   apiPokemonsResponseMock,
   asyncData,
   asyncError,
-  defaultErrorMessageMock,
   defaultServerErrorMock,
-  pokemonDtoMock,
   pokemonMock,
   pokemonsServiceMock,
 } from 'src/app/helpers/testHelpers';
-import { PokemonDTO } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 
@@ -38,7 +35,6 @@ describe('HomeComponent', () => {
       imports: [HttpClientTestingModule, MatSnackBarModule],
       declarations: [HomeComponent],
       providers: [
-        { provide: PokemonDTO, useValue: pokemonDtoMock },
         { provide: PokemonsService, useValue: pokemonsServiceMock },
         BaseService,
       ],
