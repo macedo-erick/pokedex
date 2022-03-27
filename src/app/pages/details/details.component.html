@@ -12,8 +12,8 @@
         </a>
         <div class="infos d-flex align-items-center flex-column">
             <div class="top-container d-flex align-items-center h-50">
-                <h1 class="text-light text-capitalize fw-bold letter-spacing-1 me-3 fs-1"> {{ pokemon?.name }} </h1>
-                <span class="text-light fs-4 fw-bold opacity-25"> {{ pokemon?.id | formatId }} </span>
+                <h1 class="text-light text-capitalize fw-bold letter-spacing-1 me-3 fs-1 lh-1"> {{ pokemon?.name }} </h1>
+                <span class="text-light fs-4 fw-bold opacity-50"> {{ pokemon?.id | formatId }} </span>
             </div>
             <div class="bottom-container w-100">
                 <span *ngFor="let type of pokemon?.types" class="text-capitalize fw-bold px-4 py-2 {{type.type.name}}-light me-2 rounded-pill text-light"> {{ type?.type?.name }}</span>

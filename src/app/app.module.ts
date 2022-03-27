@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     PokemonComponent,
     FormatIdPipe,
     VarietiesComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
