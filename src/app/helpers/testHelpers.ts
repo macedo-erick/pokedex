@@ -28,7 +28,11 @@ specieMock.id = 1;
 specieMock.flavor_text_entries = [{ flavor_text: '' }, { flavor_text: '' }];
 specieMock.flavor_text_entries[1].flavor_text = 'Test data';
 specieMock.evolution_chain = evolutionMock;
-specieMock.url = "https://pokeapi.co/api/v2/pokemon-species/1"
+specieMock.url = 'https://pokeapi.co/api/v2/pokemon-species/1';
+specieMock.varieties = [
+  { pokemon: { name: 'Test data' } },
+  { pokemon: { name: 'Test data' } },
+];
 
 const pokemonMock = new Pokemon();
 pokemonMock.id = 1;

@@ -7,7 +7,7 @@ describe('formatTextPipe', () => {
     formatTextPipe = new FormatTextPipe();
   });
 
-  it('Shoud be instancied', () => {
+  it('Should be instancied', () => {
     expect(formatTextPipe).toBeDefined();
   });
 
@@ -16,17 +16,21 @@ describe('formatTextPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('Should transform clear string', () => {
-    const string = 'Test\nString';
+  it('Testing transform() - (Clear string)', () => {
+    const string = 'Testing\nString';
     const formated = formatTextPipe.transform(string);
 
-    expect(formated).toBe('Test String');
+    expect(formated).toBe('Testing String');
   });
 
-  it('Should transform special string', () => {
-    const string = 'Test\nString\f';
+  it('Testing transform() - (Special string)', () => {
+    const string = 'Testing\nString\f';
     const formated = formatTextPipe.transform(string);
 
-    expect(formated).toBe('Test String ');
+    expect(formated).toBe('Testing String ');
+  });
+
+  it('Testing transform() - (Empty value)', () => {
+    formatTextPipe.transform();
   });
 });

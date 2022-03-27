@@ -6,9 +6,6 @@ import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import {
   asyncData,
   asyncError,
-  defaultErrorMessageMock,
-  defaultServerErrorMock,
-  evolutionChainMock,
   pokemonMock,
   specieMock,
   specieServiceMock,
@@ -16,7 +13,6 @@ import {
 import { EvolutionsDTO } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
 import { SpeciesService } from 'src/app/services/species/species.service';
-
 import { EvolutionCardComponent } from './evolution-card.component';
 
 describe('EvolutionCardComponent', () => {
@@ -43,8 +39,9 @@ describe('EvolutionCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EvolutionCardComponent);
     component = fixture.componentInstance;
-    component.pokemon = pokemonMock;
+    // component.pokemon = pokemonMock;
     component.evolutionChain = { evolutions: ['1', '2', '3'] };
+    component.specie = specieMock;
     fixture.detectChanges();
   });
 
@@ -52,20 +49,33 @@ describe('EvolutionCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Test get evolutions (Exception)', fakeAsync(() => {
+  it('Testing getEvolution()', fakeAsync(() => {
     spyOn(baseService, 'get').and.resolveTo(asyncData(specieMock));
 
     let req = httpController.expectOne(
-      'https://pokeapi.co/api/v2/pokemon-species/1'
+      'https://pokeapi.co/api/v2/evolution-chain/1/'
     );
     req.flush(specieMock);
   }));
 
-  it('Test get evolutions (Exception)', fakeAsync(() => {
+  it('Testing get specie', fakeAsync(() => {
+    component.specie;
+  }));
+
+  it('Testing getEvolution() - (Empty esponse)', fakeAsync(() => {
+    component.specie = undefined;
+
+    let req = httpController.expectOne(
+      'https://pokeapi.co/api/v2/evolution-chain/1/'
+    );
+    req.flush({});
+  }));
+
+  it('Testing getEvolution() - (Exception)', fakeAsync(() => {
     spyOn(baseService, 'get').and.rejectWith(asyncError(specieMock));
 
     let req = httpController.expectOne(
-      'https://pokeapi.co/api/v2/pokemon-species/1'
+      'https://pokeapi.co/api/v2/evolution-chain/1/'
     );
     req.flush(specieMock);
   }));

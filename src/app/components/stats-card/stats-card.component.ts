@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Pokemon } from 'src/app/models/models';
 
 @Component({
@@ -6,16 +7,20 @@ import { Pokemon } from 'src/app/models/models';
   templateUrl: './stats-card.component.html',
   styleUrls: ['./stats-card.component.scss'],
 })
-export class StatsCardComponent implements OnInit {
-  @Input() pokemon: Pokemon;
+export class StatsCardComponent {
+  private _pokemon = new BehaviorSubject<Pokemon>(null);
 
-  constructor() {}
+  get pokemon() {
+    return this._pokemon.getValue();
+  }
 
-  ngOnInit(): void {}
+  @Input() set pokemon(pokemon: Pokemon) {
+    this._pokemon.next(pokemon);
+  }
 
   get total() {
     let sum = 0;
-    this.pokemon.stats.forEach((stat) => (sum += stat.base_stat));
+    this.pokemon?.stats.forEach((stat) => (sum += stat.base_stat));
 
     return sum;
   }

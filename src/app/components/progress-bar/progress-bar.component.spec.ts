@@ -11,9 +11,8 @@ describe('ProgressBarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CommonModule],
-      declarations: [ ProgressBarComponent, FormatValuePipe]
-    })
-    .compileComponents();
+      declarations: [ProgressBarComponent, FormatValuePipe],
+    }).compileComponents();
   });
 
   beforeEach(() => {

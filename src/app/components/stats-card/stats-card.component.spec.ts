@@ -9,9 +9,8 @@ describe('StatsCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatsCardComponent ]
-    })
-    .compileComponents();
+      declarations: [StatsCardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -23,5 +22,10 @@ describe('StatsCardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Testing get total - (Empty pokemon)', () => {
+    component.pokemon = undefined;
+    component.total;
   });
 });

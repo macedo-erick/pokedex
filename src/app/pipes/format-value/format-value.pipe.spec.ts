@@ -12,17 +12,16 @@ describe('FormatValuePipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('Test transform value < 100', () => {
+  it('Testing transform() - (value < 100)', () => {
     const value = 10;
     const formated = formatValuePipe.transform(value);
     expect(formated).toEqual(5);
   });
 
-  it('Test transform value > 100', () => {
+  it('Testing transform() - (value > 100)', () => {
     const value = 100;
     const formated = formatValuePipe.transform(value);
 
     expect(formated).toEqual(10);
   });
-
 });

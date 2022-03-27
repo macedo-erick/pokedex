@@ -10,10 +10,7 @@ import {
   defaultServerErrorMock,
   snackBarServiceMock,
 } from 'src/app/helpers/testHelpers';
-import {
-  apiPokemonResponse,
-  Pokemon,
-} from 'src/app/models/models';
+import { apiPokemonResponse, Pokemon } from 'src/app/models/models';
 
 import { PokemonsService } from './pokemon.service';
 
@@ -22,7 +19,7 @@ describe('PokemonService', () => {
   let httpController: HttpTestingController;
   let snackBar: MatSnackBar;
 
-  let defaultMessage = 'Test Message';
+  let defaultMessage = 'Testing Message';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -41,7 +38,7 @@ describe('PokemonService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Test showMessage', () => {
+  it('Testing showMessage()', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
 
     service.showMessage(defaultMessage);
@@ -54,14 +51,14 @@ describe('PokemonService', () => {
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test errorHandler with message', () => {
+  it('Testing errorHandler() with message', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
     service.errorHandler(new Error(defaultMessage));
 
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test errorHandler without message', () => {
+  it('Testing errorHandler() without message', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
 
     service.errorHandler(new Error());
@@ -69,7 +66,7 @@ describe('PokemonService', () => {
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test getPokemons', fakeAsync(() => {
+  it('Testing getPokemons()', fakeAsync(() => {
     let pokemons: apiPokemonResponse[] = [];
 
     service.getPokemons().subscribe((response) => {
@@ -87,7 +84,7 @@ describe('PokemonService', () => {
     expect(pokemons).toEqual(apiPokemonsResponseMock.results);
   }));
 
-  it('Test getPokemons (Exception)', fakeAsync(() => {
+  it('Testing getPokemons (Exception)', fakeAsync(() => {
     let pokemons: apiPokemonResponse[];
 
     service.getPokemons().subscribe((response) => {
@@ -108,7 +105,7 @@ describe('PokemonService', () => {
     expect(pokemons).toBeUndefined();
   }));
 
-  it('Test getPokemon', () => {
+  it('Testing getPokemon()', () => {
     let pokemon: Pokemon;
 
     service.getPokemon(1).subscribe((response) => {
@@ -122,7 +119,7 @@ describe('PokemonService', () => {
     expect(pokemon).toEqual(new Pokemon());
   });
 
-  it('Test getPokemon (Exception)', () => {
+  it('Testing getPokemon() - (Exception)', () => {
     let pokemon: Pokemon;
 
     service.getPokemon(1).subscribe((response) => {

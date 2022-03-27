@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'pokedex';
-  src: url('../font/pokedex.eot?41676136');
-  src: url('../font/pokedex.eot?41676136#iefix') format('embedded-opentype'),
-       url('../font/pokedex.woff2?41676136') format('woff2'),
-       url('../font/pokedex.woff?41676136') format('woff'),
-       url('../font/pokedex.ttf?41676136') format('truetype'),
-       url('../font/pokedex.svg?41676136#pokedex') format('svg');
+  src: url('../font/pokedex.eot?1186513');
+  src: url('../font/pokedex.eot?1186513#iefix') format('embedded-opentype'),
+       url('../font/pokedex.woff2?1186513') format('woff2'),
+       url('../font/pokedex.woff?1186513') format('woff'),
+       url('../font/pokedex.ttf?1186513') format('truetype'),
+       url('../font/pokedex.svg?1186513#pokedex') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'pokedex';
-    src: url('../font/pokedex.svg?41676136#pokedex') format('svg');
+    src: url('../font/pokedex.svg?1186513#pokedex') format('svg');
   }
 }
 */
@@ -54,6 +54,7 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
+.pokedex-arrow-down:before { content: '\e800'; } /* '' */
 .pokedex-arrow-back:before { content: '\e802'; } /* '' */
 .pokedex-search:before { content: '\e803'; } /* '' */
 .pokedex-arrow-forward:before { content: '\e804'; } /* '' */

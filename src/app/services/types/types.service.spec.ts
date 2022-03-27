@@ -18,7 +18,7 @@ describe('TypesService', () => {
   let snackBar: MatSnackBar;
 
   let typeMock = { name: 'grass', url: 'https://pokeapi.co/api/v2/type/grass' };
-  let defaultMessage = 'Test Message';
+  let defaultMessage = 'Testing Message';
 
   const matSnackBarMock = {
     open: () => {},
@@ -41,7 +41,7 @@ describe('TypesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Test showMessage', () => {
+  it('Testing showMessage()', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
 
     service.showMessage(defaultMessage);
@@ -54,14 +54,14 @@ describe('TypesService', () => {
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test errorHandler with message', () => {
+  it('Testing errorHandler() with message', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
     service.errorHandler(new Error(defaultMessage));
 
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test errorHandler without message', () => {
+  it('Testing errorHandler() without message', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
 
     service.errorHandler(new Error());
@@ -69,7 +69,7 @@ describe('TypesService', () => {
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test getType', fakeAsync(() => {
+  it('Testing getType()', fakeAsync(() => {
     let type: Types;
 
     service.getType(typeMock.name).subscribe((result) => {
@@ -84,10 +84,9 @@ describe('TypesService', () => {
     req.flush(typeMock);
 
     expect(req.request.method).toBe('GET');
-    // expect(type).toEqual(typeMock);
   }));
 
-  it('Test getType (Exception)', fakeAsync(() => {
+  it('Testing getType() - (Exception)', fakeAsync(() => {
     let type: Types;
 
     service.getType(typeMock.name).subscribe((result) => {

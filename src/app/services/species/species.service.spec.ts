@@ -36,7 +36,7 @@ describe('SpeciesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Test showMessage', () => {
+  it('Testing showMessage()', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
 
     service.showMessage(defaultErrorMessageMock);
@@ -49,14 +49,14 @@ describe('SpeciesService', () => {
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test errorHandler with message', () => {
+  it('Testing errorHandler() with message', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
     service.errorHandler(new Error(defaultErrorMessageMock));
 
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test errorHandler without message', () => {
+  it('Testing errorHandler() without message', () => {
     let showMessageSpy = spyOn(snackBar, 'open');
 
     service.errorHandler(new Error());
@@ -64,7 +64,7 @@ describe('SpeciesService', () => {
     expect(showMessageSpy).toHaveBeenCalled();
   });
 
-  it('Test getSpecie', fakeAsync(() => {
+  it('Testing getSpecie()', fakeAsync(() => {
     let specie: Specie;
 
     service.getSpecie(1).subscribe((result) => {
@@ -78,7 +78,7 @@ describe('SpeciesService', () => {
     expect(specie).toEqual(specieMock);
   }));
 
-  it('Test getSpecie (Exception)', fakeAsync(() => {
+  it('Testing getSpecie() - (Exception)', fakeAsync(() => {
     let specie: Specie;
 
     service.getSpecie(1).subscribe((result) => {

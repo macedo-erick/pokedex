@@ -1,10 +1,12 @@
 import {
   Component,
   Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
 } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Pokemon, Specie, Types, TypesDTO } from 'src/app/models/models';
-import { BaseService } from 'src/app/services/base/base.service';
 import { TypesService } from 'src/app/services/types/types.service';
 
 @Component({
@@ -13,47 +15,35 @@ import { TypesService } from 'src/app/services/types/types.service';
   styleUrls: ['./about-card.component.scss'],
 })
 export class AboutCardComponent implements OnInit {
-  @Input() pokemon: Pokemon = new Pokemon();
-  specie: Specie;
+  private _pokemon = new BehaviorSubject<Pokemon>(null);
+  @Input() specie: Specie;
   types: Types[] = [];
 
-  constructor(
-    private typesService: TypesService,
-    private typesDto: TypesDTO,
-    private baseService: BaseService
-  ) {}
+  constructor(private typesService: TypesService, private typesDto: TypesDTO) {}
+
+  @Input() set pokemon(pokemon: Pokemon) {
+    this._pokemon.next(pokemon);
+  }
+
+  get pokemon() {
+    return this._pokemon.getValue();
+  }
 
   ngOnInit(): void {
-    this.getSpecie();
     this.getTypes();
   }
 
-  getSpecie() {
-    this.baseService
-      .get(this.pokemon.species.url)
-      .then((res) => {
-        this.specie = res;
-      })
-      .catch((err) => {
-        return err;
-      });
-  }
-
   getTypes() {
-    Promise.all(
-      this.pokemon.types.map((type) => {
+    this._pokemon.subscribe((r) => {
+      this.pokemon?.types.map((type) => {
         return this.typesService
           .getType(type.type.name)
           .toPromise()
-          .then((res) => {
-            return res;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-    ).then((res) => {
-      res.map((i) => this.types.push(this.typesDto.convertResponseToType(i)));
+          .then((res) =>
+            this.types.push(this.typesDto.convertResponseToType(res))
+          )
+          .catch((err) => err);
+      });
     });
   }
 

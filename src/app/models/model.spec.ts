@@ -38,7 +38,7 @@ describe('Testing EvolotiunDTO model', () => {
     expect(convertData).toEqual(evolutionDTO.convertResponseToEvolution(data));
   });
 
-  it('test convertResponseToEvolution - case 2', () => {
+  it('test convertResponseToEvolution() - (Case 2)', () => {
     const convertData: Evolutions = new Evolutions();
     convertData.evolutions = ['Test', 'Test 1', undefined];
 
@@ -47,7 +47,7 @@ describe('Testing EvolotiunDTO model', () => {
     expect(convertData).toEqual(evolutionDTO.convertResponseToEvolution(data));
   });
 
-  it('test convertResponseToEvolution - case 2', () => {
+  it('test convertResponseToEvolution() - (Case 2)', () => {
     const convertData: Evolutions = new Evolutions();
     convertData.evolutions = ['Test', 'Test 1', undefined];
 
@@ -55,7 +55,4 @@ describe('Testing EvolotiunDTO model', () => {
 
     expect(convertData).toEqual(evolutionDTO.convertResponseToEvolution(data));
   });
-
-
-
 });

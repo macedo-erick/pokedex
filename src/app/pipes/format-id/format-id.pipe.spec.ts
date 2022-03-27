@@ -5,4 +5,9 @@ describe('FormatIdPipe', () => {
     const pipe = new FormatIdPipe();
     expect(pipe).toBeTruthy();
   });
+
+  it('Testing transform() - (Empty value)', () => {
+    const pipe = new FormatIdPipe();
+    pipe.transform();
+  });
 });

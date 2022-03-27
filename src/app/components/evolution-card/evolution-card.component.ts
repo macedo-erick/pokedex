@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Evolutions, EvolutionsDTO, Pokemon } from 'src/app/models/models';
+import { BehaviorSubject } from 'rxjs';
+import { Evolutions, EvolutionsDTO, Specie } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { BaseService } from 'src/app/services/base/base.service';
   styleUrls: ['./evolution-card.component.scss'],
 })
 export class EvolutionCardComponent implements OnInit {
-  @Input() pokemon: Pokemon;
+  private _specie = new BehaviorSubject<Specie>(null);
   evolutionChain: Evolutions;
 
   constructor(
@@ -20,16 +21,24 @@ export class EvolutionCardComponent implements OnInit {
     this.getEvolution();
   }
 
+  @Input() set specie(specie: Specie) {
+    this._specie.next(specie);
+  }
+
+  get specie() {
+    return this._specie.getValue();
+  }
+
   getEvolution() {
-    this.baseService.get(this.pokemon.species.url).then((result) => {
+    this._specie.subscribe((r) => {
       this.baseService
-        .get(result.evolution_chain.url)
+        .get(r?.evolution_chain?.url)
         .then((res) => {
           this.evolutionChain =
             this.evolutionDto.convertResponseToEvolution(res);
         })
         .catch((err) => {
-          console.log(err);
+          return err;
         });
     });
   }

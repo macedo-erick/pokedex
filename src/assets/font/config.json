@@ -76,6 +76,20 @@
       "search": [
         "navigate_next_black_24dp"
       ]
+    },
+    {
+      "uid": "9636effabb8cf974af433fdb5917ae40",
+      "css": "arrow_drop_down_black_24dp",
+      "code": 59392,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M291.7 416.7L500 625 708.3 416.7H291.7Z",
+        "width": 1000
+      },
+      "search": [
+        "arrow_drop_down_black_24dp"
+      ]
     }
   ]
 }

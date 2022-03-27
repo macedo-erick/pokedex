@@ -102,7 +102,7 @@
 
     main {
         section {
-            &:first-of-type {
+            &.top-container {
                 flex-direction: column !important;
 
                 about-card,

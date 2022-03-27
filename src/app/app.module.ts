@@ -22,6 +22,11 @@ import { FormatValuePipe } from './pipes/format-value/format-value.pipe';
 import { EvolutionCardComponent } from './components/evolution-card/evolution-card.component';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { FormatIdPipe } from './pipes/format-id/format-id.pipe';
+import { VarietiesComponent } from './components/varieties/varieties.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,7 @@ import { FormatIdPipe } from './pipes/format-id/format-id.pipe';
     EvolutionCardComponent,
     PokemonComponent,
     FormatIdPipe,
+    VarietiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,11 @@ import { FormatIdPipe } from './pipes/format-id/format-id.pipe';
     MatSnackBarModule,
     MatRippleModule,
     MatProgressBarModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    OverlayModule,
+    FormsModule
   ],
   providers: [TypesDTO, EvolutionsDTO],
   bootstrap: [AppComponent],

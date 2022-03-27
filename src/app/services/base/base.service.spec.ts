@@ -28,7 +28,7 @@ describe('BaseService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Test get method', fakeAsync(() => {
+  it('Testing get()', fakeAsync(() => {
     service
       .get(url)
       .then((res) => {
@@ -46,7 +46,7 @@ describe('BaseService', () => {
     expect(req.request.method).toBe('GET');
   }));
 
-  it('Test get method - Exception', fakeAsync(() => {
+  it('Testing get() - (Exception)', fakeAsync(() => {
     service
       .get(url)
       .then((res) => {

@@ -55,7 +55,7 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Test getPokemons', fakeAsync(() => {
+  it('Testing getPokemons()', fakeAsync(() => {
     spyOn(pokemonsService, 'getPokemons').and.callThrough();
     spyOn(baseService, 'get').and.resolveTo(asyncData(pokemonMock));
 
@@ -64,7 +64,7 @@ describe('HomeComponent', () => {
     component.getPokemons();
   }));
 
-  it('Test getPokemons (Subscribe expection)', () => {
+  it('Testing getPokemons() - (Subscribe expection)', () => {
     spyOn(pokemonsService, 'getPokemons')
       .and.callThrough()
       .and.returnValue(throwError(defaultServerErrorMock));
@@ -72,7 +72,7 @@ describe('HomeComponent', () => {
     component.getPokemons();
   });
 
-  it('Test getPokemons (Expection)', fakeAsync(() => {
+  it('Testing getPokemons() - (Expection)', fakeAsync(() => {
     spyOn(baseService, 'get')
       .and.callThrough()
       .and.rejectWith(asyncError(defaultServerErrorMock));
@@ -80,7 +80,7 @@ describe('HomeComponent', () => {
     component.getPokemons();
   }));
 
-  it('Test loadPokemons', fakeAsync(() => {
+  it('Testing loadPokemons()', fakeAsync(() => {
     spyOn(baseService, 'get')
       .and.callThrough()
       .and.resolveTo(apiPokemonsResponseMock);
@@ -88,7 +88,7 @@ describe('HomeComponent', () => {
     component.loadPokemons();
   }));
 
-  it('Test loadPokemons (Exception)', fakeAsync(() => {
+  it('Testing loadPokemons() - (Exception)', fakeAsync(() => {
     spyOn(baseService, 'get')
       .and.callThrough()
       .and.rejectWith(asyncError(defaultServerErrorMock));
@@ -96,7 +96,7 @@ describe('HomeComponent', () => {
     component.loadPokemons();
   }));
 
-  it('Test promisesHasndler (Exception)', fakeAsync(() => {
+  it('Testing promisesHandler() - (Exception)', fakeAsync(() => {
     spyOn(baseService, 'get')
       .and.callThrough()
       .and.rejectWith(asyncError(defaultServerErrorMock));
@@ -104,21 +104,23 @@ describe('HomeComponent', () => {
     component.promisesHandler(apiPokemonsResponseMock);
   }));
 
-  it('Test search with query', fakeAsync(() => {
+  it('Testing search with query', fakeAsync(() => {
     spyOn(pokemonsService, 'getPokemons').and.callThrough();
     spyOn(baseService, 'get').and.resolveTo(asyncData(pokemonMock));
     flush();
     component.search('T');
   }));
 
-  it('Test search with query (Exception)', fakeAsync(() => {
+  it('Testing search with query (Exception)', fakeAsync(() => {
     spyOn(pokemonsService, 'getPokemons').and.callThrough();
-    spyOn(baseService, 'get').and.rejectWith(asyncError(defaultServerErrorMock));
+    spyOn(baseService, 'get').and.rejectWith(
+      asyncError(defaultServerErrorMock)
+    );
     flush();
     component.search('T');
   }));
 
-  it('Test search no query', fakeAsync(() => {
+  it('Testing search no query', fakeAsync(() => {
     spyOn(pokemonsService, 'getPokemons').and.callThrough();
     spyOn(baseService, 'get').and.resolveTo(asyncData(pokemonMock));
     flush();

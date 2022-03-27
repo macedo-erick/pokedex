@@ -4,7 +4,7 @@ export class Pokemon {
   types: Types[];
   stats: Stats[];
   abilities: Abilites[];
-  species: Specie;
+  species?: Specie;
   sprites: Sprite;
   height: number;
   weight: number;
@@ -50,6 +50,11 @@ export class Specie {
   url: string;
   flavor_text_entries: FlavorText[];
   evolution_chain: EvolutionChain;
+  varieties: any[];
+
+  constructor() {
+    this.varieties = [];
+  }
 }
 
 export class FlavorText {

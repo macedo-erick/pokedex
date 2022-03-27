@@ -1,8 +1,4 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SpeciesService } from 'src/app/services/species/species.service';
 import { TypesService } from 'src/app/services/types/types.service';
@@ -10,7 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AboutCardComponent } from './about-card.component';
 import { throwError } from 'rxjs';
-import {  TypesDTO } from 'src/app/models/models';
+import { TypesDTO } from 'src/app/models/models';
 import { FormatTextPipe } from 'src/app/pipes/format-text/format-text.pipe';
 import { CommonModule } from '@angular/common';
 import {
@@ -29,9 +25,8 @@ import { BaseService } from 'src/app/services/base/base.service';
 describe('AboutCardComponent', () => {
   let component: AboutCardComponent;
   let fixture: ComponentFixture<AboutCardComponent>;
-  let speciesService: SpeciesService;
   let typesService: TypesService;
-  let baseService: BaseService
+  let baseService: BaseService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -53,7 +48,7 @@ describe('AboutCardComponent', () => {
     component = fixture.componentInstance;
     component.pokemon = pokemonMock;
     component.types = [typeMock];
-    component.specie = specieMock
+    component.specie = specieMock;
     fixture.detectChanges();
   });
 
@@ -61,32 +56,23 @@ describe('AboutCardComponent', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
-
-  it('Test getSpecie', () => {
-    spyOn(baseService, 'get')
-      .and.callThrough()
-      .and.resolveTo(asyncData(defaultServerErrorMock));
-
-    component.getSpecie();
-  });
-
-
-  it('Test getSpecie - Exception', () => {
-    spyOn(baseService, 'get')
-      .and.callThrough()
-      .and.rejectWith(asyncError(defaultServerErrorMock));
-
-    component.getSpecie();
-  });
-
-  it('Test getTypes', fakeAsync(() => {
+  it('Testing getTypes()', fakeAsync(() => {
     spyOn(typesService, 'getType')
       .and.callThrough()
       .and.returnValue(asyncData(typeMock));
     component.getTypes();
   }));
 
-  it('Test getTypes - Exception', fakeAsync(() => {
+  it('Testing getTypes() - (Empty pokemon)', fakeAsync(() => {
+    component.pokemon = undefined;
+
+    spyOn(typesService, 'getType')
+      .and.callThrough()
+      .and.returnValue(asyncData(typeMock));
+    component.getTypes();
+  }));
+
+  it('Testing getTypes() - (Exception)', fakeAsync(() => {
     spyOn(typesService, 'getType')
       .and.callThrough()
       .and.returnValue(throwError(defaultServerErrorMock));

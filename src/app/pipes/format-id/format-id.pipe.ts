@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'formatId',
 })
 export class FormatIdPipe implements PipeTransform {
-  transform(value: string): unknown {
-    return `#${value.toString().padStart(4, '0')}`;
+  transform(value?: string): unknown {
+    return `#${value?.toString().padStart(4, '0')}`;
   }
 }
