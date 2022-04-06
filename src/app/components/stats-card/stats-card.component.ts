@@ -8,7 +8,7 @@ import { Pokemon } from 'src/app/models/models';
   styleUrls: ['./stats-card.component.scss'],
 })
 export class StatsCardComponent {
-  private _pokemon = new BehaviorSubject<Pokemon>(null);
+  private _pokemon = new BehaviorSubject<Pokemon>(new Pokemon());
 
   get pokemon() {
     return this._pokemon.getValue();

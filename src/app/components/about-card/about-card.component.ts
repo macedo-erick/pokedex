@@ -15,7 +15,7 @@ import { TypesService } from 'src/app/services/types/types.service';
   styleUrls: ['./about-card.component.scss'],
 })
 export class AboutCardComponent implements OnInit {
-  private _pokemon = new BehaviorSubject<Pokemon>(null);
+  private _pokemon = new BehaviorSubject<Pokemon>(new Pokemon());
   @Input() specie: Specie;
   types: Types[] = [];
 

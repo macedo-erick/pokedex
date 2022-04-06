@@ -9,7 +9,7 @@ import { BaseService } from 'src/app/services/base/base.service';
   styleUrls: ['./evolution-card.component.scss'],
 })
 export class EvolutionCardComponent implements OnInit {
-  private _specie = new BehaviorSubject<Specie>(null);
+  private _specie = new BehaviorSubject<Specie>(new Specie());
   evolutionChain: Evolutions;
 
   constructor(
