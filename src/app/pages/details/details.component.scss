@@ -1,5 +1,17 @@
 .root {
     section {
+
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto !important;
+            padding: 30px 20px;
+
+            button {
+                border: noi;
+            }
+        }
+
         header {
             max-width: 1200px;
             height: 15rem;
@@ -18,16 +30,6 @@
                 }
             }
         }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto !important;
-            padding: 30px 20px;
-
-            button {
-                border: noi;
-            }
-        }
     }
 
     main {
@@ -35,16 +37,11 @@
         margin: 0 auto !important;
         padding: 30px 20px;
 
-        section {
+        .top-container {
             div {
                 width: 50%;
             }
         }
-    }
-
-
-    .letter-spacing-1 {
-        letter-spacing: 1.5px;
     }
 
     .action-btn {
@@ -52,6 +49,69 @@
             em {
                 &::before {
                     color: #b6b6b6;
+                }
+            }
+        }
+    }
+}
+
+
+@media(max-width: 460px) {
+    header {
+        a {
+            &:first-of-type {
+                margin-right: 1rem !important;
+            }
+
+        }
+
+        .top-container {
+            height: 3rem !important;
+
+            h1 {
+                font-size: 1rem !important;
+            }
+
+            span {
+                font-size: 1rem !important;
+            }
+        }
+
+        .bottom-container {
+            display: flex;
+            flex-direction: column;
+
+            span {
+                width: 6rem !important;
+                text-align: center;
+                margin: 0.5rem 0 !important;
+                font-size: .7rem !important;
+            }
+        }
+
+        .img-wrap {
+            width: max-content !important;
+            height: max-content !important;
+            transform: translate(20px, 20px);
+
+            img {
+                width: 70% !important;
+            }
+        }
+    }
+
+    main {
+        section {
+            &.top-container {
+                flex-direction: column !important;
+
+                about-card,
+                stats-card {
+                    width: 100% !important;
+                }
+
+                about-card {
+                    margin-bottom: 1.5rem !important;
                 }
             }
         }

@@ -18,17 +18,16 @@
     }
 
     .bottom-container {
-        .types {
-            p {
-                text-align: center;
-            }
-        }
-
         img {
             width: 50%;
             background-size: contain;
             background-position: center center;
             background-repeat: no-repeat;
         }
+    }
+
+    @media(max-width: 480px) {
+        width: fit-content;
+        height: 250px;
     }
 }

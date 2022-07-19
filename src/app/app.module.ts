@@ -11,13 +11,23 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
 import { StatsCardComponent } from './components/stats-card/stats-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { PokemonDTO, SpecieDTO, TypesDTO } from './models/models';
+import { EvolutionsDTO, TypesDTO } from './models/models';
 import { MatRippleModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { AboutCardComponent } from './components/about-card/about-card.component';
 import { CardComponent } from './components/card/card.component';
-import { FormatDescriptionPipe } from './resources/pipe/format-description.pipe';
+import { FormatTextPipe } from './pipes/format-text/format-text.pipe';
+import { FormatValuePipe } from './pipes/format-value/format-value.pipe';
+import { EvolutionCardComponent } from './components/evolution-card/evolution-card.component';
+import { PokemonComponent } from './components/pokemon/pokemon.component';
+import { FormatIdPipe } from './pipes/format-id/format-id.pipe';
+import { VarietiesComponent } from './components/varieties/varieties.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +39,13 @@ import { FormatDescriptionPipe } from './resources/pipe/format-description.pipe'
     ProgressBarComponent,
     AboutCardComponent,
     CardComponent,
-    FormatDescriptionPipe,
+    FormatTextPipe,
+    FormatValuePipe,
+    EvolutionCardComponent,
+    PokemonComponent,
+    FormatIdPipe,
+    VarietiesComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,9 +55,13 @@ import { FormatDescriptionPipe } from './resources/pipe/format-description.pipe'
     MatSnackBarModule,
     MatRippleModule,
     MatProgressBarModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    OverlayModule,
+    FormsModule
   ],
-  providers: [PokemonDTO, SpecieDTO, TypesDTO],
+  providers: [TypesDTO, EvolutionsDTO],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

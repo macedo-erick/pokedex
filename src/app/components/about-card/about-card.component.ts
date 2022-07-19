@@ -1,20 +1,12 @@
 import {
-  AfterViewInit,
   Component,
   Input,
   OnChanges,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {
-  Pokemon,
-  Specie,
-  SpecieDTO,
-  Type,
-  TypesDTO,
-} from 'src/app/models/models';
-import { SpeciesService } from 'src/app/services/species/species.service';
+import { BehaviorSubject } from 'rxjs';
+import { Pokemon, Specie, Types, TypesDTO } from 'src/app/models/models';
 import { TypesService } from 'src/app/services/types/types.service';
 
 @Component({
@@ -22,59 +14,43 @@ import { TypesService } from 'src/app/services/types/types.service';
   templateUrl: './about-card.component.html',
   styleUrls: ['./about-card.component.scss'],
 })
-export class AboutCardComponent implements OnInit, OnChanges {
-  @Input() pokemon: Pokemon = new Pokemon();
-  specie: Specie;
-  types: Type[] = [];
+export class AboutCardComponent implements OnInit {
+  private _pokemon = new BehaviorSubject<Pokemon>(new Pokemon());
+  @Input() specie: Specie;
+  types: Types[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private specieService: SpeciesService,
-    private typesService: TypesService,
-    private specieDto: SpecieDTO,
-    private typesDto: TypesDTO
-  ) {}
+  constructor(private typesService: TypesService, private typesDto: TypesDTO) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.pokemon) {
-      this.getTypes();
-    }
+  @Input() set pokemon(pokemon: Pokemon) {
+    this._pokemon.next(pokemon);
+  }
+
+  get pokemon() {
+    return this._pokemon.getValue();
   }
 
   ngOnInit(): void {
-    this.getSpecie();
-  }
-
-  getSpecie() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.specieService.getSpecie(parseInt(id)).subscribe((res) => {
-      this.specie = this.specieDto.convertResponseToSpecie(res);
-    });
+    this.getTypes();
   }
 
   getTypes() {
-    Promise.all(
-      this.pokemon.types.map((t) => {
+    this._pokemon.subscribe((r) => {
+      this.pokemon?.types.map((type) => {
         return this.typesService
-          .getType(t.name)
+          .getType(type.type.name)
           .toPromise()
-          .then((res) => {
-            return res;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-    ).then((res) => {
-      res.map((i) => this.types.push(this.typesDto.convertResponseToType(i)));
+          .then((res) =>
+            this.types.push(this.typesDto.convertResponseToType(res))
+          )
+          .catch((err) => err);
+      });
     });
   }
 
   get weaknesses() {
     let weak = [];
-
     for (const type of this.types) {
-      weak = weak.concat(type.weakness);
+      weak = weak.concat(type.weaknesses);
     }
 
     return Array.from(new Set(weak));
@@ -82,9 +58,8 @@ export class AboutCardComponent implements OnInit, OnChanges {
 
   get resistances() {
     let resistance = [];
-
     for (const type of this.types) {
-      resistance = resistance.concat(type.resistence);
+      resistance = resistance.concat(type.resistences);
     }
 
     return Array.from(new Set(resistance));

@@ -1,0 +1,26 @@
+main {
+    section {
+        width: 13rem;
+    }
+
+    em::before {
+        font-size: 3rem;
+    }
+}
+
+@media(max-width: 460px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+
+        section {
+            width: 30vw;
+        }
+
+        em {
+            margin: 2rem 0 !important;
+            transform: rotate(90deg);
+        }
+    }
+
+}
