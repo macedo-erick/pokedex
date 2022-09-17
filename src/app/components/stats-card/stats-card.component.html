@@ -1,0 +1,49 @@
+<card header="stats">
+  <main>
+    <section class="pb-4">
+      <progress-bar
+        [value]="pokemon?.stats[0].base_stat"
+        label="Hp"
+      ></progress-bar>
+    </section>
+
+    <section class="pb-4">
+      <progress-bar
+        [value]="pokemon?.stats[1].base_stat"
+        label="Attack"
+      ></progress-bar>
+    </section>
+
+    <section class="pb-4">
+      <progress-bar
+        [value]="pokemon?.stats[2].base_stat"
+        label="Defense"
+      ></progress-bar>
+    </section>
+
+    <section class="pb-4">
+      <progress-bar
+        [value]="pokemon?.stats[3].base_stat"
+        label="Sp. Atk"
+      ></progress-bar>
+    </section>
+
+    <section class="pb-4">
+      <progress-bar
+        [value]="pokemon?.stats[4].base_stat"
+        label="sp. def"
+      ></progress-bar>
+    </section>
+
+    <section class="pb-4">
+      <progress-bar
+        [value]="pokemon?.stats[5].base_stat"
+        label="speed"
+      ></progress-bar>
+    </section>
+
+    <section class="pb-4">
+      <progress-bar [value]="total" label="total"></progress-bar>
+    </section>
+  </main>
+</card>

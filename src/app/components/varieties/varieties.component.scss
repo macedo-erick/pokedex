@@ -1,0 +1,16 @@
+section {
+  height: 3rem;
+  width: 15rem;
+
+  :host(::ng-deep .mat-select-value-text, ::ng-deep .mat-select-arrow) {
+    color: white;
+  }
+
+  ::ng-deep .mat-option-text {
+    color: red !important;
+  }
+
+  @media (max-width: 575.98px) {
+    width: 100%;
+  }
+}

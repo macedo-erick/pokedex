@@ -1,0 +1,15 @@
+<section class="bg-dark px-3 d-flex align-items-center">
+  <mat-select
+    class="text-capitalize"
+    [(ngModel)]="selected"
+    panelClass="bg-dark"
+    (selectionChange)="viewVariety($event)"
+  >
+    <mat-option
+      [value]="option"
+      class="text-capitalize text-light"
+      *ngFor="let option of options"
+      >{{ option }}</mat-option
+    >
+  </mat-select>
+</section>

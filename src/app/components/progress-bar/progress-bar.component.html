@@ -1,0 +1,11 @@
+<section class="row">
+  <span class="col fw-bolder text-capitalize">{{ label }}</span>
+  <span class="col text-black-50 text-body fw-bold">{{ value }}</span>
+  <div class="col">
+    <mat-progress-bar
+      mode="determinate"
+      [value]="value | formatValue"
+      class="progress-bar rounded-pill"
+    ></mat-progress-bar>
+  </div>
+</section>

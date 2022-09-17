@@ -1,0 +1,80 @@
+.root {
+  section {
+    nav {
+      max-width: 1200px;
+      margin: 0 auto !important;
+      padding: 30px 20px;
+    }
+
+    header {
+      max-width: 1200px;
+      height: 15rem;
+      padding: 20px;
+      margin: 0 auto !important;
+
+      .img-wrap {
+        position: relative;
+        width: 220px;
+        height: 220px;
+
+        img {
+          width: 90%;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        height: 20rem;
+
+        .img-wrap {
+          position: absolute;
+          width: 220px;
+          height: 220px;
+
+          img {
+            position: absolute;
+            top: -5rem;
+            left: 50%;
+            width: 50%;
+          }
+        }
+
+        .action-btn {
+          z-index: 1000;
+        }
+      }
+    }
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto !important;
+    padding: 1rem;
+
+    .top-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      gap: 1rem;
+
+      about-card,
+      stats-card {
+        ::ng-deep .card {
+          height: 100%;
+        }
+      }
+
+      margin-bottom: 1rem !important;
+    }
+  }
+
+  .action-btn {
+    &:hover {
+      em {
+        &::before {
+          color: #b6b6b6;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.weakness,
+.resistences {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.row {
+  padding: 0.5rem 0;
+}

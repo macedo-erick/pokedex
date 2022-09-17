@@ -1,0 +1,30 @@
+<div class="card shadow p-4 border-0" [ngClass]="type | async">
+  <section
+    class="top-container d-flex justify-content-between h-50 align-items-center"
+  >
+    <span class="fw-bold fs-3 text-light text-capitalize">{{
+      pokemon?.name
+    }}</span>
+    <span class="fw-bold text-light opacity-25 fs-3">{{
+      pokemon?.id | formatId
+    }}</span>
+  </section>
+  <section
+    class="bottom-container d-flex justify-content-between h-100 align-items-center"
+  >
+    <div class="types">
+      <p
+        class="rounded-pill {{
+          type.type.name
+        }}-light shadow-sm px-4 py-2 text-light my-2 text-capitalize fw-bolder text-center"
+        *ngFor="let type of pokemon?.types"
+      >
+        {{ type.type.name }}
+      </p>
+    </div>
+    <img
+      [src]="pokemon?.sprites?.other['official-artwork'].front_default"
+      [alt]="pokemon?.name"
+    />
+  </section>
+</div>

@@ -1,0 +1,73 @@
+<card header="about">
+  <div class="row">
+    <p
+      [class]="{ 'col-5': mobile, 'col-3': !mobile }"
+      [class]="{ 'col-5': mobile, 'col-3': !mobile }"
+      class="fw-bolder"
+    >
+      Description
+    </p>
+    <p class="col">
+      {{ specie?.flavor_text_entries[1].flavor_text | formatText }}
+    </p>
+  </div>
+
+  <div class="row">
+    <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
+      Height
+    </p>
+    <p class="col">{{ pokemon?.height / 10 }} m</p>
+  </div>
+
+  <div class="row">
+    <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
+      Weight
+    </p>
+    <p class="col">{{ pokemon?.weight / 10 }} kg</p>
+  </div>
+
+  <div class="row">
+    <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
+      Habilities
+    </p>
+    <ul class="col habilities d-flex">
+      <ng-container *ngFor="let item of pokemon?.abilities">
+        <li class="text-capitalize me-1" *ngIf="!item.is_hidden">
+          {{ item?.ability.name }}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="row">
+    <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
+      Weaknesses
+    </p>
+    <ul class="col weakness">
+      <li
+        *ngFor="let weakness of weaknesses"
+        class="px-2 py-2 {{
+          weakness
+        }}-light rounded-pill text-light fw-bold text-capitalize text-center"
+      >
+        {{ weakness }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
+      Resistances
+    </p>
+    <ul class="col resistences">
+      <li
+        *ngFor="let resistance of resistances"
+        class="px-2 py-2 {{
+          resistance
+        }}-light rounded-pill text-light fw-bold text-capitalize text-center"
+      >
+        {{ resistance }}
+      </li>
+    </ul>
+  </div>
+</card>

@@ -1,0 +1,35 @@
+.root {
+  max-width: 1350px;
+  margin: 0 auto !important;
+
+  .toolbar {
+    height: 8rem;
+
+    .search-bar {
+      .search-input {
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  main {
+    padding: 1rem 3rem;
+
+    ul {
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+      gap: 2rem 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    input {
+      width: 8rem;
+    }
+  }
+}

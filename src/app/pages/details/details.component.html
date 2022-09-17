@@ -1,0 +1,73 @@
+<div class="root">
+  <section class="{{ pokemon?.types[0].type.name }}">
+    <nav>
+      <a
+        class="border-0 bg-transparent text-light fs-2 p-0 action-btn text-decoration-none d-flex align-items-center"
+        [routerLink]="['']"
+      >
+        <em class="pokedex-arrow-back"></em>
+      </a>
+    </nav>
+    <header class="d-flex justify-content-between">
+      <div
+        *ngIf="pokemon?.id == 1"
+        style="width: 2rem; margin-right: 2.5rem !important"
+      ></div>
+      <a
+        class="border-0 bg-transparent text-light fs-2 p-0 action-btn text-decoration-none d-flex align-items-center"
+        *ngIf="id != 1"
+        [routerLink]="['/details', id - 1]"
+      >
+        <em class="pokedex-chevron-left"></em>
+      </a>
+      <div class="infos d-flex align-items-center flex-column">
+        <div class="top-container d-flex align-items-center h-50">
+          <h1
+            class="text-light text-capitalize fw-bold letter-spacing-1 me-3 fs-1 lh-1"
+          >
+            {{ pokemon?.name }}
+          </h1>
+          <span class="text-light fs-4 fw-bold opacity-50">
+            {{ pokemon?.id | formatId }}
+          </span>
+        </div>
+        <div class="bottom-container w-100">
+          <span
+            *ngFor="let type of pokemon?.types"
+            class="text-capitalize fw-bold px-4 py-2 {{
+              type.type.name
+            }}-light me-2 rounded-pill text-light"
+          >
+            {{ type?.type?.name }}</span
+          >
+        </div>
+      </div>
+      <div class="img-wrap">
+        <img
+          [src]="pokemon?.sprites?.other['official-artwork']?.front_default"
+          alt="{{ pokemon?.name }}"
+        />
+      </div>
+      <a
+        class="border-0 bg-transparent text-light fs-2 p-0 action-btn text-decoration-none d-flex align-items-center"
+        [routerLink]="['/details/', id + 1]"
+        *ngIf="id != 10228"
+      >
+        <em class="pokedex-chevron-right"></em>
+      </a>
+    </header>
+  </section>
+
+  <main>
+    <section *ngIf="specie?.varieties?.length > 1" class="mb-4 varieties">
+      <varieties [options]="varieties" [pokemon]="pokemon"></varieties>
+    </section>
+    <section class="top-container">
+      <about-card [pokemon]="pokemon" [specie]="specie"></about-card>
+      <stats-card [pokemon]="pokemon"></stats-card>
+    </section>
+    <section>
+      <evolution-card [specie]="specie"></evolution-card>
+    </section>
+  </main>
+</div>

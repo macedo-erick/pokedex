@@ -1,0 +1,95 @@
+{
+  "name": "pokedex",
+  "css_prefix_text": "pokedex-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "copyright": "Erick Macedo",
+  "glyphs": [
+    {
+      "uid": "67a197af273b391d429e42696bfb6338",
+      "css": "arrow-back",
+      "code": 59394,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M833.3 458.3H326.3L559.2 225.4 500 166.7 166.7 500 500 833.3 558.8 774.6 326.3 541.7H833.3V458.3Z",
+        "width": 1000
+      },
+      "search": [
+        "arrow_back_black_24dp"
+      ]
+    },
+    {
+      "uid": "ad83d8e1876bb6cc1cf034998543e3e4",
+      "css": "search",
+      "code": 59395,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M645.8 583.3H612.9L601.3 572.1C642.1 524.6 666.7 462.9 666.7 395.8 666.7 246.3 545.4 125 395.8 125S125 246.3 125 395.8 246.3 666.7 395.8 666.7C462.9 666.7 524.6 642.1 572.1 601.3L583.3 612.9V645.8L791.7 853.8 853.7 791.7 645.8 583.3ZM395.8 583.3C292.1 583.3 208.3 499.6 208.3 395.8S292.1 208.3 395.8 208.3 583.3 292.1 583.3 395.8 499.6 583.3 395.8 583.3Z",
+        "width": 1000
+      },
+      "search": [
+        "search_black_24dp"
+      ]
+    },
+    {
+      "uid": "db9768c5837777105adc6c23eb4f4dca",
+      "css": "arrow-forward",
+      "code": 59396,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M500 166.7L441.2 225.4 673.8 458.3H166.7V541.7H673.8L441.3 774.6 500 833.3 833.3 500 500 166.7Z",
+        "width": 1000
+      },
+      "search": [
+        "arrow_forward_black_24dp"
+      ]
+    },
+    {
+      "uid": "a79d4dbeb0d7f46c7c6447b3d2cfc0ca",
+      "css": "chevron-left",
+      "code": 59397,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M642.1 308.8L583.3 250 333.3 500 583.3 750 642.1 691.3 451.3 500 642.1 308.8Z",
+        "width": 1000
+      },
+      "search": [
+        "chevron_left_black_24dp"
+      ]
+    },
+    {
+      "uid": "53374efccda95d5794d3f255be2d615d",
+      "css": "chevron-right",
+      "code": 59398,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M417.5 250L358.7 308.8 549.6 500 358.7 691.3 417.5 750 667.5 500 417.5 250Z",
+        "width": 1000
+      },
+      "search": [
+        "navigate_next_black_24dp"
+      ]
+    },
+    {
+      "uid": "9636effabb8cf974af433fdb5917ae40",
+      "css": "arrow_drop_down_black_24dp",
+      "code": 59392,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M291.7 416.7L500 625 708.3 416.7H291.7Z",
+        "width": 1000
+      },
+      "search": [
+        "arrow_drop_down_black_24dp"
+      ]
+    }
+  ]
+}

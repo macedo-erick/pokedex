@@ -1,0 +1,43 @@
+<div class="root h-100">
+  <header
+    class="toolbar d-flex justify-content-between align-items-center px-5"
+  >
+    <section>
+      <h1 class="app-name fw-bold small-caps fs-1">Pokédex</h1>
+    </section>
+    <section class="search-bar">
+      <input
+        type="text"
+        class="search-input border-0 rounded-3 p-3 bg-grey"
+        placeholder="Search..."
+        [formControl]="search"
+      />
+    </section>
+  </header>
+  <main>
+    <ul>
+      <pokemon-card
+        [pokemon]="pokemon"
+        *ngFor="let pokemon of pokemons"
+        class="pokemon-card"
+        routerLink="details/{{ pokemon.id }}"
+      ></pokemon-card>
+
+      <h1 *ngIf="!pokemons.length && this.loaded" class="fw-bold fw-4">
+        No results found.
+      </h1>
+    </ul>
+    <section
+      class="py-5 d-flex align-items-center justify-content-center"
+      *ngIf="next != null && this.loaded"
+    >
+      <button
+        class="load-pokemons-btn p-3 rounded border-0 text-light fw-bolder soft-blue-bg"
+        matRipple
+        (click)="loadPage()"
+      >
+        Load more Pokémons
+      </button>
+    </section>
+  </main>
+</div>

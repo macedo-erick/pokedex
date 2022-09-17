@@ -1,0 +1,28 @@
+.root {
+    section {
+        width: 100vw;
+        height: 100vh;
+
+        p {
+            font-variant: small-caps;
+        }
+
+        .error-code {
+            font-size: 5rem;
+            letter-spacing: -2px;
+        }
+
+        .error-descr {
+            font-size: 2rem;
+        }
+
+        .error-sub-descr {
+            padding: 10px 0;
+        }
+
+        button {
+            outline: none;
+            border: 1.5px solid black;
+        }
+    }
+}
