@@ -40,5 +40,4 @@ describe('VarietiesComponent', () => {
     component.pokemon = undefined;
     component.ngOnInit();
   });
-
 });

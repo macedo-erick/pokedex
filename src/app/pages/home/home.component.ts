@@ -13,7 +13,6 @@ import { BaseService } from 'src/app/services/base/base.service';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 
 @Component({
-  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })

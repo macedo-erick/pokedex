@@ -24,12 +24,12 @@
       gap: 2rem 1rem;
     }
   }
-}
 
-@media (max-width: 480px) {
-  .search-bar {
-    input {
-      width: 8rem;
+  @media (max-width: 575.98px) {
+    .search-bar {
+      input {
+        width: 8rem;
+      }
     }
   }
 }

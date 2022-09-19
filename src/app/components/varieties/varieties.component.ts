@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/models';
 
 @Component({
-  selector: 'varieties',
+  selector: 'poke-varieties',
   templateUrl: './varieties.component.html',
   styleUrls: ['./varieties.component.scss'],
 })

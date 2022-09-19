@@ -34,9 +34,8 @@
         <div class="bottom-container w-100">
           <span
             *ngFor="let type of pokemon?.types"
-            class="text-capitalize fw-bold px-4 py-2 {{
-              type.type.name
-            }}-light me-2 rounded-pill text-light"
+            class="text-capitalize fw-bold px-4 py-2 me-2 rounded-pill text-light bg-light"
+            [class]="type.type.name"
           >
             {{ type?.type?.name }}</span
           >
@@ -60,14 +59,14 @@
 
   <main>
     <section *ngIf="specie?.varieties?.length > 1" class="mb-4 varieties">
-      <varieties [options]="varieties" [pokemon]="pokemon"></varieties>
+      <poke-varieties [options]="varieties" [pokemon]="pokemon"></poke-varieties>
     </section>
     <section class="top-container">
-      <about-card [pokemon]="pokemon" [specie]="specie"></about-card>
-      <stats-card [pokemon]="pokemon"></stats-card>
+      <poke-about-card [pokemon]="pokemon" [specie]="specie"></poke-about-card>
+      <poke-stats-card [pokemon]="pokemon"></poke-stats-card>
     </section>
     <section>
-      <evolution-card [specie]="specie"></evolution-card>
+      <poke-evolution-card [specie]="specie"></poke-evolution-card>
     </section>
   </main>
 </div>

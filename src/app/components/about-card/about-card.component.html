@@ -1,5 +1,5 @@
-<card header="about">
-  <div class="row">
+<poke-card header="about">
+  <div class="row py-2">
     <p
       [class]="{ 'col-5': mobile, 'col-3': !mobile }"
       [class]="{ 'col-5': mobile, 'col-3': !mobile }"
@@ -12,21 +12,21 @@
     </p>
   </div>
 
-  <div class="row">
+  <div class="row py-2">
     <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
       Height
     </p>
     <p class="col">{{ pokemon?.height / 10 }} m</p>
   </div>
 
-  <div class="row">
+  <div class="row py-2">
     <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
       Weight
     </p>
     <p class="col">{{ pokemon?.weight / 10 }} kg</p>
   </div>
 
-  <div class="row">
+  <div class="row py-2">
     <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
       Habilities
     </p>
@@ -39,35 +39,33 @@
     </ul>
   </div>
 
-  <div class="row">
+  <div class="row py-2">
     <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
       Weaknesses
     </p>
     <ul class="col weakness">
       <li
         *ngFor="let weakness of weaknesses"
-        class="px-2 py-2 {{
-          weakness
-        }}-light rounded-pill text-light fw-bold text-capitalize text-center"
+        class="px-2 py-2 rounded-pill text-light fw-bold text-capitalize text-center bg-light"
+        [class]="weakness"
       >
         {{ weakness }}
       </li>
     </ul>
   </div>
 
-  <div class="row">
+  <div class="row py-2">
     <p [class]="{ 'col-5': mobile, 'col-3': !mobile }" class="fw-bolder">
       Resistances
     </p>
     <ul class="col resistences">
       <li
         *ngFor="let resistance of resistances"
-        class="px-2 py-2 {{
-          resistance
-        }}-light rounded-pill text-light fw-bold text-capitalize text-center"
+        class="px-2 py-2 rounded-pill text-light fw-bold text-capitalize text-center bg-light"
+        [class]="resistance"
       >
         {{ resistance }}
       </li>
     </ul>
   </div>
-</card>
+</poke-card>

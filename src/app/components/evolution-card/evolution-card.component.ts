@@ -5,7 +5,7 @@ import { Evolutions, Specie } from 'src/app/models/models';
 import { BaseService } from 'src/app/services/base/base.service';
 
 @Component({
-  selector: 'evolution-card',
+  selector: 'poke-evolution-card',
   templateUrl: './evolution-card.component.html',
   styleUrls: ['./evolution-card.component.scss'],
 })
@@ -15,10 +15,6 @@ export class EvolutionCardComponent implements OnInit {
 
   constructor(private baseService: BaseService) {}
 
-  ngOnInit(): void {
-    this.getEvolution();
-  }
-
   get specie() {
     return this._specie.getValue();
   }
@@ -27,10 +23,14 @@ export class EvolutionCardComponent implements OnInit {
     this._specie.next(specie);
   }
 
+  ngOnInit(): void {
+    this.getEvolution();
+  }
+
   getEvolution() {
-    this._specie.subscribe((specie) => {
+    this._specie?.subscribe((specie) => {
       this.baseService
-        .get(specie.evolution_chain?.url as string)
+        .get(specie?.evolution_chain?.url as string)
         .subscribe((res) => {
           this.evolutionChain = {
             evolutions: convertResponseToEvolution(res),

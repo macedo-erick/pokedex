@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Pokemon } from 'src/app/models/models';
 
 @Component({
-  selector: 'stats-card',
+  selector: 'poke-stats-card',
   templateUrl: './stats-card.component.html',
   styleUrls: ['./stats-card.component.scss'],
 })
@@ -20,7 +20,7 @@ export class StatsCardComponent {
 
   get total() {
     let sum = 0;
-    this.pokemon.stats?.forEach((stat) => (sum += stat.base_stat));
+    this.pokemon?.stats?.forEach((stat) => (sum += stat.base_stat));
 
     return sum;
   }

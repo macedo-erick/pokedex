@@ -2,12 +2,10 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import {
-  asyncData,
-  asyncError,
-  pokemonMock,
+  evolutionChainMock,
   specieMock,
   specieServiceMock,
 } from 'src/app/helpers/testHelpers';
@@ -48,29 +46,7 @@ describe('EvolutionCardComponent', () => {
   });
 
   it('Testing getEvolution()', () => {
-    spyOn(baseService, 'get').and.returnValue(
-      of({
-        chain: {
-          species: {
-            name: 'test',
-          },
-          evolves_to: [
-            {
-              species: {
-                name: 'test',
-              },
-              evolves_to: [
-                {
-                  species: {
-                    name: 'test',
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      })
-    );
+    spyOn(baseService, 'get').and.returnValue(of(evolutionChainMock));
     component.getEvolution();
   });
 

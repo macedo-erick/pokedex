@@ -5,14 +5,14 @@ import { Pokemon, Specie, Types } from 'src/app/models/models';
 import { TypesService } from 'src/app/services/types/types.service';
 
 @Component({
-  selector: 'about-card',
+  selector: 'poke-about-card',
   templateUrl: './about-card.component.html',
   styleUrls: ['./about-card.component.scss'],
 })
 export class AboutCardComponent implements OnInit {
-  @Input() specie: Specie | undefined;
   types: Types[] = [];
-  private _pokemon = new BehaviorSubject<Pokemon>({});
+  @Input() specie: Specie | undefined;
+  _pokemon = new BehaviorSubject<Pokemon>({});
 
   constructor(private typesService: TypesService) {}
 
@@ -22,20 +22,6 @@ export class AboutCardComponent implements OnInit {
 
   get pokemon() {
     return this._pokemon.getValue();
-  }
-
-  ngOnInit(): void {
-    this.getTypes();
-  }
-
-  getTypes() {
-    this._pokemon.subscribe(() => {
-      this.pokemon.types?.map((type) => {
-        return this.typesService
-          .getType(type.type?.name)
-          .subscribe((res) => this.types.push(convertResponseToType(res)));
-      });
-    });
   }
 
   get weaknesses() {
@@ -65,5 +51,19 @@ export class AboutCardComponent implements OnInit {
     }
 
     return false;
+  }
+
+  ngOnInit(): void {
+    this.getTypes();
+  }
+
+  getTypes() {
+    this._pokemon.subscribe((pokemon) => {
+      pokemon?.types?.map((type) => {
+        return this.typesService
+          .getType(type.type?.name)
+          .subscribe((res) => this.types.push(convertResponseToType(res)));
+      });
+    });
   }
 }

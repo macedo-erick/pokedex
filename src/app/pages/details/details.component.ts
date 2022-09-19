@@ -5,7 +5,6 @@ import { BaseService } from 'src/app/services/base/base.service';
 import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
 
 @Component({
-  selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })

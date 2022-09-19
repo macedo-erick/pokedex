@@ -5,16 +5,16 @@ import { TypesService } from 'src/app/services/types/types.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AboutCardComponent } from './about-card.component';
-import { of, throwError } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { FormatTextPipe } from 'src/app/pipes/format-text/format-text.pipe';
 import { CommonModule } from '@angular/common';
 import {
-  defaultServerErrorMock,
   pokemonMock,
   specieMock,
   specieServiceMock,
   typeMock,
   typeServiceMock,
+  weaknessesResistencesMock,
 } from 'src/app/helpers/testHelpers';
 import { BaseService } from 'src/app/services/base/base.service';
 
@@ -55,25 +55,14 @@ describe('AboutCardComponent', () => {
   it('Testing getTypes()', () => {
     spyOn(typesService, 'getType')
       .and.callThrough()
-      .and.returnValue(of({
-        damage_relations: {
-          double_damage_from: [{name: 'test'}],
-          double_damage_to: [{name: 'test'}],
-        }
-      }));
+      .and.returnValue(of(weaknessesResistencesMock));
     component.getTypes();
   });
-
 
   it('Testing getTypes() - Branch 2', () => {
     spyOn(typesService, 'getType')
       .and.callThrough()
-      .and.returnValue(of({
-        damage_relations: {
-          double_damage_from: [{name: 'test'}],
-          double_damage_to: [{name: 'test'}],
-        }
-      }));
+      .and.returnValue(of(weaknessesResistencesMock));
 
     component.pokemon = {};
 
@@ -83,16 +72,10 @@ describe('AboutCardComponent', () => {
   it('Testing getTypes() - Branch 3', () => {
     spyOn(typesService, 'getType')
       .and.callThrough()
-      .and.returnValue(of({
-        damage_relations: {
-          double_damage_from: [{name: 'test'}],
-          double_damage_to: [{name: 'test'}],
-        }
-      }));
+      .and.returnValue(of(weaknessesResistencesMock));
 
-    component.pokemon = {types: [{}]};
+    component.pokemon = { types: [{}] };
 
     component.getTypes();
   });
-
 });

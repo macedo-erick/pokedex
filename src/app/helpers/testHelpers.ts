@@ -73,6 +73,35 @@ const evolutionChainMock = {
   },
 };
 
+const weaknessesResistencesMock = {
+  damage_relations: {
+    double_damage_from: [{ name: 'test' }],
+    double_damage_to: [{ name: 'test' }],
+  },
+};
+
+// const evolutionChainMock = {
+//   chain: {
+//     species: {
+//       name: 'test',
+//     },
+//     evolves_to: [
+//       {
+//         species: {
+//           name: 'test',
+//         },
+//         evolves_to: [
+//           {
+//             species: {
+//               name: 'test',
+//             },
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// };
+
 const apiPokemonResponseMock = {
   name: 'test',
   url: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1500',
@@ -124,5 +153,6 @@ export {
   apiPokemonsResponseMock,
   defaultErrorMessageMock,
   defaultServerErrorMock,
-  typeMock
+  typeMock,
+  weaknessesResistencesMock,
 };

@@ -1,271 +1,257 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('./assets/font/css/pokedex.css');
+@import url("./assets/font/css/pokedex.css");
 
 * {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 html,
 body {
-    height: 100%;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 :root {
-    --color-primary-red: #770A20;
-    --color-red: #FB1B1B;
-    --color-black: #000000;
-    --color-grey: #F1F1F1;
-    --color-white: #FFFFFF;
-    --color-dark-blue: #0A285F;
-    --color-soft-blue: #0075BE;
-    --color-orange: #D5A100;
-    --color-yellow: #FFCC00;
-    --color-grass: #3eb397;
-    --color-fire: #FC6C6D;
-    --color-water: #6890F0;
-    --color-bug: #A8B820;
-    --color-normal: #A8A878;
-    --color-poison: #A040A0;
-    --color-electric: #F8D030;
-    --color-ground: #E0C068;
-    --color-fairy: #EE99AC;
-    --color-fighting: #C03028;
-    --color-psychic: #F85888;
-    --color-rock: #B8A038;
-    --color-ghost: #705898;
-    --color-ice: #98D8D8;
-    --color-dragon: #7038F8;
-    --color-flying: #98D8D8;
-    --color-dark: #0b3737;
-    --color-steel: #787aae;
-    --color-grass-light: #46c5a8;
-    --color-fire-light: #f58080;
-    --color-water-light: #85a8f8;
-    --color-bug-light: #bbc46d;
-    --color-normal-light: #c4c490;
-    --color-poison-light: #c26dc2;
-    --color-electric-light: #e4c95e;
-    --color-ground-light: #e4cd8e;
-    --color-fairy-light: #f7a9ba;
-    --color-fighting-light: #d5524b;
-    --color-psychic-light: #f78cac;
-    --color-rock-light: #ccb963;
-    --color-ghost-light: #8770ac;
-    --color-ice-light: #b0d6d6;
-    --color-dragon-light: #9062fc;
-    --color-flying-light: #98d1d1;
-    --color-dark-light: #164343;
-    --color-steel-light: #a2a4ca;
-    
+  --color-primary-red: #770a20;
+  --color-red: #fb1b1b;
+  --color-black: #000000;
+  --color-grey: #f1f1f1;
+  --color-white: #ffffff;
+  --color-dark-blue: #0a285f;
+  --color-soft-blue: #0075be;
+  --color-orange: #d5a100;
+  --color-yellow: #ffcc00;
+  --color-grass: #3eb397;
+  --color-fire: #fc6c6d;
+  --color-water: #6890f0;
+  --color-bug: #a8b820;
+  --color-normal: #a8a878;
+  --color-poison: #a040a0;
+  --color-electric: #f8d030;
+  --color-ground: #e0c068;
+  --color-fairy: #ee99ac;
+  --color-fighting: #c03028;
+  --color-psychic: #f85888;
+  --color-rock: #b8a038;
+  --color-ghost: #705898;
+  --color-ice: #98d8d8;
+  --color-dragon: #7038f8;
+  --color-flying: #98d8d8;
+  --color-dark: #0b3737;
+  --color-steel: #787aae;
+  --color-grass-light: #46c5a8;
+  --color-fire-light: #f58080;
+  --color-water-light: #85a8f8;
+  --color-bug-light: #bbc46d;
+  --color-normal-light: #c4c490;
+  --color-poison-light: #c26dc2;
+  --color-electric-light: #e4c95e;
+  --color-ground-light: #e4cd8e;
+  --color-fairy-light: #f7a9ba;
+  --color-fighting-light: #d5524b;
+  --color-psychic-light: #f78cac;
+  --color-rock-light: #ccb963;
+  --color-ghost-light: #8770ac;
+  --color-ice-light: #b0d6d6;
+  --color-dragon-light: #9062fc;
+  --color-flying-light: #98d1d1;
+  --color-dark-light: #164343;
+  --color-steel-light: #a2a4ca;
 }
 
 .small-caps {
-    font-variant: small-caps;
+  font-variant: small-caps;
 }
 
 .grass {
-    background-color: var(--color-grass) !important;
+  background-color: var(--color-grass) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-grass-light) !important;
     background-blend-mode: soft-light;
+  }
 }
 
 .fire {
-    background-color: var(--color-fire) !important;
+  background-color: var(--color-fire) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-fire-light) !important;
     background-blend-mode: soft-light;
+  }
 }
 
 .water {
-    background-color: var(--color-water) !important;
+  background-color: var(--color-water) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-water-light) !important;
     background-blend-mode: soft-light;
+  }
 }
 
 .bug {
-    background-color: var(--color-bug) !important;
+  background-color: var(--color-bug) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-bug-light) !important;
     background-blend-mode: soft-light;
+  }
 }
 
 .normal {
-    background-color: var(--color-normal) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-normal) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-normal-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .poison {
-    background-color: var(--color-poison) !important;
+  background-color: var(--color-poison) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-poison-light) !important;
     background-blend-mode: soft-light;
+  }
 }
 
 .electric {
-    background-color: var(--color-electric) !important;
+  background-color: var(--color-electric) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-electric-light) !important;
     background-blend-mode: soft-light;
+  }
 }
 
 .ground {
-    background-color: var(--color-ground) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-ground) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-ground-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .fairy {
-    background-color: var(--color-fairy) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-fairy) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-fairy-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .fighting {
-    background-color: var(--color-fighting) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-fighting) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-fighting-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .psychic {
-    background-color: var(--color-psychic) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-psychic) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-psychic-light) !important;
+    background-blend-mode: soft-light; }
 }
 
 .rock {
-    background-color: var(--color-rock) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-rock) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-rock-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .ghost {
-    background-color: var(--color-ghost) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-ghost) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-ghost-light) !important;
+    background-blend-mode: soft-light; }
 }
 
 .ice {
-    background-color: var(--color-ice) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-ice) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-ice-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .dragon {
-    background-color: var(--color-dragon) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-dragon) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-dragon-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .flying {
-    background-color: var(--color-flying) !important;
+  background-color: var(--color-flying) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-flying-light) !important;
     background-blend-mode: soft-light;
+  }
 }
 
 .dark {
-    background-color: var(--color-dark) !important;
-    background-blend-mode: soft-light;
+  background-color: var(--color-dark) !important;
+  background-blend-mode: soft-light;
+
+  &.bg-light {
+    background-color: var(--color-dark-light) !important;
+    background-blend-mode: soft-light;}
 }
 
 .steel {
-    background-color: var(--color-steel) !important;
-    background-blend-mode: soft-light;
-}
+  background-color: var(--color-steel) !important;
+  background-blend-mode: soft-light;
 
-// Light Colors
-
-.grass-light {
-    background-color: var(--color-grass-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.fire-light {
-    background-color: var(--color-fire-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.water-light {
-    background-color: var(--color-water-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.bug-light {
-    background-color: var(--color-bug-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.normal-light {
-    background-color: var(--color-normal-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.poison-light {
-    background-color: var(--color-poison-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.electric-light {
-    background-color: var(--color-electric-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.ground-light {
-    background-color: var(--color-ground-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.fairy-light {
-    background-color: var(--color-fairy-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.fighting-light {
-    background-color: var(--color-fighting-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.psychic-light {
-    background-color: var(--color-psychic-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.rock-light {
-    background-color: var(--color-rock-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.ghost-light {
-    background-color: var(--color-ghost-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.ice-light {
-    background-color: var(--color-ice-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.dragon-light {
-    background-color: var(--color-dragon-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.flying-light {
-    background-color: var(--color-flying-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.dark-light {
-    background-color: var(--color-dark-light) !important;
-    background-blend-mode: soft-light;
-}
-
-.steel-light {
+  &.bg-light {
     background-color: var(--color-steel-light) !important;
-    background-blend-mode: soft-light;
+    background-blend-mode: soft-light;}
 }
 
 .letter-spacing-1 {
-    letter-spacing: 1.5px;
+  letter-spacing: 1.5px;
 }
 
 .soft-blue-bg {
-    background-color: var(--color-soft-blue);
+  background-color: var(--color-soft-blue);
 }
 
 .w-15 {
-    width: 15%;
+  width: 15%;
 }
 
 .bg-grey {
-    background-color: var(--color-grey);
+  background-color: var(--color-grey);
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }

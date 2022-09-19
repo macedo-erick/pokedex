@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { Pokemon } from 'src/app/models/models';
 
 @Component({
-  selector: 'pokemon-card',
+  selector: 'poke-pokemon-card',
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.scss'],
 })
