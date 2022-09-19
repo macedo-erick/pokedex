@@ -8,6 +8,7 @@ Angular Pókedex Project
 
 - Angular
 - PokéAPI
+- Bootstrap
 
 
 ## Authors
