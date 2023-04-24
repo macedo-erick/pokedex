@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { forkJoin, of } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { FormControl } from "@angular/forms";
+import { forkJoin, of } from "rxjs";
 import {
   debounceTime,
   distinctUntilChanged,
   map,
   switchMap,
   tap,
-} from 'rxjs/operators';
-import { apiPokemonResponse, Pokemon } from 'src/app/models/models';
-import { BaseService } from 'src/app/services/base/base.service';
-import { PokemonsService } from 'src/app/services/pokemons/pokemon.service';
+} from "rxjs/operators";
+import { apiPokemonResponse, Pokemon } from "src/app/models/models";
+import { BaseService } from "src/app/services/base/base.service";
+import { PokemonsService } from "src/app/services/pokemons/pokemon.service";
 
 @Component({
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
   next: string | undefined;
   pokemons: Pokemon[] = [];
   filteredPokemons: Pokemon[] = [];
   loaded = false;
-  search = new FormControl({ value: '', disabled: false });
+  search = new FormControl({ value: "", disabled: false });
 
   constructor(
     private pokemonsService: PokemonsService,
@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
       )
       .subscribe({
         next: (pokemons) => {
-          this.pokemons = pokemons;
+          this.pokemons.push(...pokemons);
           this.loaded = true;
         },
         error: (err) => {
